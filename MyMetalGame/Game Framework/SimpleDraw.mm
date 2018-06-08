@@ -25,16 +25,3 @@ void FillTriangle(const Vector2& p1, const Vector2& p2, const Vector2& p3, const
     FillTriangle(p1, p2, p3, color, color, color);
 }
 
-void FillTriangle(const Vector2& p1, const Vector2& p2, const Vector2& p3, const Color& c1, const Color& c2, const Color& c3)
-{
-    DrawCommand command;
-    command.type = DrawCommandType_FillTriangle;
-    command.pos[0] = p1;
-    command.pos[1] = p2;
-    command.pos[2] = p3;
-    command.colors[0] = c1;
-    command.colors[1] = c2;
-    command.colors[2] = c3;
-    AddDrawCommand(command);
-}
-

@@ -34,7 +34,6 @@
 		8EE0C68F20C99D2200907509 /* GMObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C68E20C99D2200907509 /* GMObject.cpp */; };
 		8EE0C69220C99EED00907509 /* GameError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C69020C99EED00907509 /* GameError.cpp */; };
 		8EE0C69520C9A8A200907509 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C69320C9A8A100907509 /* Globals.cpp */; };
-		8EE0C69820C9AF6100907509 /* DrawCommand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C69620C9AF6100907509 /* DrawCommand.cpp */; };
 		8EE0C6A120C9B9A400907509 /* MyMTKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C6A020C9B9A400907509 /* MyMTKView.m */; };
 /* End PBXBuildFile section */
 
@@ -94,8 +93,6 @@
 		8EE0C69120C99EED00907509 /* GameError.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameError.hpp; sourceTree = "<group>"; };
 		8EE0C69320C9A8A100907509 /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
 		8EE0C69420C9A8A200907509 /* Globals.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Globals.hpp; sourceTree = "<group>"; };
-		8EE0C69620C9AF6100907509 /* DrawCommand.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DrawCommand.cpp; sourceTree = "<group>"; };
-		8EE0C69720C9AF6100907509 /* DrawCommand.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DrawCommand.hpp; sourceTree = "<group>"; };
 		8EE0C69F20C9B9A400907509 /* MyMTKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMTKView.h; sourceTree = "<group>"; };
 		8EE0C6A020C9B9A400907509 /* MyMTKView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyMTKView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,8 +203,6 @@
 			children = (
 				8E0544B720C999C300EE6484 /* SimpleDraw.hpp */,
 				8E0544B620C999C300EE6484 /* SimpleDraw.mm */,
-				8EE0C69720C9AF6100907509 /* DrawCommand.hpp */,
-				8EE0C69620C9AF6100907509 /* DrawCommand.cpp */,
 			);
 			name = graphics;
 			sourceTree = "<group>";
@@ -337,7 +332,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8EE0C68320C99C6F00907509 /* Input.mm in Sources */,
-				8EE0C69820C9AF6100907509 /* DrawCommand.cpp in Sources */,
 				8E0544B820C999C300EE6484 /* SimpleDraw.mm in Sources */,
 				8E9340D920C99AE1000A4FE5 /* Color.cpp in Sources */,
 				8E9340DE20C99B59000A4FE5 /* StringSupport.mm in Sources */,

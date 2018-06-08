@@ -10,7 +10,6 @@
 #define SimpleDraw_hpp
 
 #include "Color.hpp"
-#include "DrawCommand.hpp"
 #include "Vector2.hpp"
 #include "BlendMode.hpp"
 

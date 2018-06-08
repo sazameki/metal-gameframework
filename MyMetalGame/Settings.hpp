@@ -9,6 +9,6 @@
 #ifndef Settings_hpp
 #define Settings_hpp
 
-#define METAL_POLYGON_BATCH_SIZE        10000
+#define METAL_MAX_POLYGON_COUNT     10000
 
 #endif /* Settings_hpp */
