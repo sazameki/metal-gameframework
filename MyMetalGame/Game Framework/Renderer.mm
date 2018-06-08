@@ -16,8 +16,16 @@
 #include "DrawCommand.hpp"
 #include "Settings.hpp"
 #import "AAPLShaderTypes.h"
+#include "BlendMode.hpp"
 #import <os/log.h>
 
+
+static id<MTLCommandBuffer> _Nullable   sCommandBuffer;
+static MTKView* _Nullable               sMetalView;
+static id<MTLBuffer> _Nullable          sMetalVertexBuffer;
+
+
+static BlendMode sBlendMode;
 
 static const NSUInteger kMaxBuffersInFlight = 3;
 static const size_t kAlignedUniformsSize = (sizeof(Uniforms) & ~0xFF) + 0x100;
@@ -25,6 +33,31 @@ static const size_t kAlignedUniformsSize = (sizeof(Uniforms) & ~0xFF) + 0x100;
 
 void Start();
 void Update();
+
+
+void Clear(const Color& color)
+{
+    // TODO: 未処理の頂点バッファが溜まっていれば破棄する処理を行う。
+    MTLRenderPassDescriptor *renderPassDescriptor = sMetalView.currentRenderPassDescriptor;
+
+    if (renderPassDescriptor) {
+        renderPassDescriptor.colorAttachments[0].loadAction = MTLLoadActionClear;
+        renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(color.r, color.g, color.b, color.a);
+        renderPassDescriptor.depthAttachment.loadAction = MTLLoadActionClear;
+        renderPassDescriptor.depthAttachment.clearDepth = 1.0f;
+        renderPassDescriptor.stencilAttachment.loadAction = MTLLoadActionClear;
+        renderPassDescriptor.stencilAttachment.clearStencil = 0;
+
+        id <MTLRenderCommandEncoder> renderEncoder = [sCommandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor];
+        [renderEncoder endEncoding];
+    }
+}
+
+void SetBlendMode(BlendMode blendMode)
+{
+    // TODO: 頂点バッファが溜まっていれば吐き出す処理を行う。
+    sBlendMode = blendMode;
+}
 
 
 @implementation Renderer
@@ -58,8 +91,6 @@ void Update();
     float       _rotation;
 
     vector_uint2 _viewportSize;
-
-    BlendMode blendMode;
 
     id<MTLBuffer>   metalVertexBuffer;
     unsigned batchedPolygonCount;
@@ -394,21 +425,21 @@ void Update();
 
 - (id<MTLRenderPipelineState>)pipelineStateForSimpleDrawing
 {
-    if (blendMode == BlendModeNone) {
+    if (sBlendMode == BlendModeNone) {
         return pipelineState_SimpleDraw_Alpha;
-    } else if (blendMode == BlendModeScreen) {
+    } else if (sBlendMode == BlendModeScreen) {
         return pipelineState_SimpleDraw_Screen;
-    } else if (blendMode == BlendModeAdd) {
+    } else if (sBlendMode == BlendModeAdd) {
         return pipelineState_SimpleDraw_Add;
-    } else if (blendMode == BlendModeMultiply) {
+    } else if (sBlendMode == BlendModeMultiply) {
         return pipelineState_SimpleDraw_Multiply;
-    } else if (blendMode == BlendModeInvert) {
+    } else if (sBlendMode == BlendModeInvert) {
         return pipelineState_SimpleDraw_Invert;
-    } else if (blendMode == BlendModeXOR) {
+    } else if (sBlendMode == BlendModeXOR) {
         return pipelineState_SimpleDraw_XOR;
-    } else if (blendMode == BlendModeCopy) {
+    } else if (sBlendMode == BlendModeCopy) {
         return pipelineState_SimpleDraw_Copy;
-    } else if (blendMode == BlendModeClear) {
+    } else if (sBlendMode == BlendModeClear) {
         return pipelineState_SimpleDraw_Clear;
     } else {
         return pipelineState_SimpleDraw_Alpha;
@@ -443,12 +474,15 @@ void Update();
 
 - (void)drawInMTKView:(nonnull MTKView *)view
 {
+    sMetalView = view;
+    sMetalVertexBuffer = metalVertexBuffer;
+
     //os_log(OS_LOG_DEFAULT, "/------\\");
-    /// Per frame updates here
     dispatch_semaphore_wait(_inFlightSemaphore, DISPATCH_TIME_FOREVER);
 
     id<MTLCommandBuffer> commandBuffer = [_commandQueue commandBuffer];
     commandBuffer.label = @"MyCommand";
+    sCommandBuffer = commandBuffer;
 
     __block dispatch_semaphore_t block_sema = _inFlightSemaphore;
     [commandBuffer addCompletedHandler:^(id<MTLCommandBuffer> buffer) {
@@ -461,37 +495,15 @@ void Update();
     Input::__UpdateTriggers();
     Time::__Update();
     Update();
-    Time::frameCount++;
 
     // 描画コマンドの処理
     unsigned passCount = 0;
-    blendMode = BlendModeAlpha;
+    sBlendMode = BlendModeAlpha;
     batchedPolygonCount = 0;
     pBatchBuffer = (AAPLVertex *)metalVertexBuffer.contents;
     bufferOffset = 0;
     for (DrawCommand &command : gDrawCommands) {
-        // Clearコマンド
-        if (command.type == DrawCommandType_Clear) {
-            // バッチ処理のデータがある場合、いずれ消えるのでデータを破棄する
-            if (batchedPolygonCount > 0) {
-                batchedPolygonCount = 0;
-            }
-            // クリア用のパスの実行
-            [self performClearPassWithCommand:&command view:view commandBuffer:commandBuffer];
-            passCount++;
-        }
-        // ブレンドモードの設定
-        else if (command.type == DrawCommandType_SetBlendMode) {
-            // バッチ処理のデータがある場合、吐き出してしまう
-            if (batchedPolygonCount > 0) {
-                [self flushBatchedDataWithView:view commandBuffer:commandBuffer];
-                passCount++;
-            }
-            // ブレンドモードを変更
-            blendMode = command.blendMode;
-        }
-        // ポリゴンの塗りつぶし
-        else if (command.type == DrawCommandType_FillTriangle) {
+        if (command.type == DrawCommandType_FillTriangle) {
             // TODO: 異なる種類（単純描画とテクスチャ描画）の描画が来た場合に、直前までのデータを吐き出す処理を追加する。
             // バッチ処理のデータを追加する
             for (int i = 0; i < 3; i++) {
@@ -526,6 +538,8 @@ void Update();
         [commandBuffer presentDrawable:view.currentDrawable];
         [commandBuffer commit];
     }
+
+    Time::frameCount++;
 
     //os_log(OS_LOG_DEFAULT, "\\------/");
 }

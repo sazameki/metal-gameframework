@@ -1,5 +1,5 @@
 //
-//  SimpleDraw.cpp
+//  SimpleDraw.mm
 //  MyMetalGame
 //
 //  Created by numata on 2018/06/08.
@@ -7,23 +7,8 @@
 //
 
 #include "SimpleDraw.hpp"
+#include "Renderer.hpp"
 
-
-void Clear(const Color& color)
-{
-    DrawCommand command;
-    command.type = DrawCommandType_Clear;
-    command.colors[0] = color;
-    AddDrawCommand(command);
-}
-
-void SetBlendMode(BlendMode blendMode)
-{
-    DrawCommand command;
-    command.type = DrawCommandType_SetBlendMode;
-    command.blendMode = blendMode;
-    AddDrawCommand(command);
-}
 
 void FillTriangle(const Vector2 pos[3], const Color& color)
 {

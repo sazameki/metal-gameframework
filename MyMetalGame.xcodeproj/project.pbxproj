@@ -18,7 +18,7 @@
 		8E0544AB20C9951800EE6484 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0544A920C9951800EE6484 /* Metal.framework */; };
 		8E0544AD20C995FE00EE6484 /* ModelIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0544AC20C995FE00EE6484 /* ModelIO.framework */; };
 		8E0544B020C9961B00EE6484 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E0544AE20C9961B00EE6484 /* Game.cpp */; };
-		8E0544B820C999C300EE6484 /* SimpleDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E0544B620C999C300EE6484 /* SimpleDraw.cpp */; };
+		8E0544B820C999C300EE6484 /* SimpleDraw.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E0544B620C999C300EE6484 /* SimpleDraw.mm */; };
 		8E9340D520C99AE1000A4FE5 /* Matrix4x4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9340C620C99AE1000A4FE5 /* Matrix4x4.cpp */; };
 		8E9340D620C99AE1000A4FE5 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9340CA20C99AE1000A4FE5 /* Vector3.cpp */; };
 		8E9340D720C99AE1000A4FE5 /* Vector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9340CD20C99AE1000A4FE5 /* Vector4.cpp */; };
@@ -58,7 +58,7 @@
 		8E0544AC20C995FE00EE6484 /* ModelIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelIO.framework; path = System/Library/Frameworks/ModelIO.framework; sourceTree = SDKROOT; };
 		8E0544AE20C9961B00EE6484 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		8E0544B120C996BD00EE6484 /* GameFramework.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameFramework.hpp; sourceTree = "<group>"; };
-		8E0544B620C999C300EE6484 /* SimpleDraw.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SimpleDraw.cpp; sourceTree = "<group>"; };
+		8E0544B620C999C300EE6484 /* SimpleDraw.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SimpleDraw.mm; sourceTree = "<group>"; };
 		8E0544B720C999C300EE6484 /* SimpleDraw.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SimpleDraw.hpp; sourceTree = "<group>"; };
 		8E9340C620C99AE1000A4FE5 /* Matrix4x4.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Matrix4x4.cpp; sourceTree = "<group>"; };
 		8E9340C720C99AE1000A4FE5 /* Vector2.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector2.hpp; sourceTree = "<group>"; };
@@ -79,6 +79,7 @@
 		8E9340DD20C99B59000A4FE5 /* StringSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StringSupport.mm; sourceTree = "<group>"; };
 		8EDCDB7E20C9DC9F00287F9C /* AAPLShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLShaderTypes.h; sourceTree = "<group>"; };
 		8EDCDB7F20CA939300287F9C /* Settings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Settings.hpp; sourceTree = "<group>"; };
+		8EDCDB8020CADEAA00287F9C /* BlendMode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BlendMode.hpp; sourceTree = "<group>"; };
 		8EE0C68120C99C6F00907509 /* Input.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Input.hpp; sourceTree = "<group>"; };
 		8EE0C68220C99C6F00907509 /* Input.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Input.mm; sourceTree = "<group>"; };
 		8EE0C68420C99C7800907509 /* Random.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Random.hpp; sourceTree = "<group>"; };
@@ -204,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				8E0544B720C999C300EE6484 /* SimpleDraw.hpp */,
-				8E0544B620C999C300EE6484 /* SimpleDraw.cpp */,
+				8E0544B620C999C300EE6484 /* SimpleDraw.mm */,
 				8EE0C69720C9AF6100907509 /* DrawCommand.hpp */,
 				8EE0C69620C9AF6100907509 /* DrawCommand.cpp */,
 			);
@@ -215,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				8E9340D320C99AE1000A4FE5 /* Types.hpp */,
+				8EDCDB8020CADEAA00287F9C /* BlendMode.hpp */,
 				8E9340CB20C99AE1000A4FE5 /* Color.hpp */,
 				8E9340D120C99AE1000A4FE5 /* Color.cpp */,
 				8E9340CC20C99AE1000A4FE5 /* Matrix4x4.hpp */,
@@ -336,7 +338,7 @@
 			files = (
 				8EE0C68320C99C6F00907509 /* Input.mm in Sources */,
 				8EE0C69820C9AF6100907509 /* DrawCommand.cpp in Sources */,
-				8E0544B820C999C300EE6484 /* SimpleDraw.cpp in Sources */,
+				8E0544B820C999C300EE6484 /* SimpleDraw.mm in Sources */,
 				8E9340D920C99AE1000A4FE5 /* Color.cpp in Sources */,
 				8E9340DE20C99B59000A4FE5 /* StringSupport.mm in Sources */,
 				8E0544A020C6AA7F00EE6484 /* main.m in Sources */,
