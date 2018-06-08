@@ -37,6 +37,9 @@ static BlendMode    sBlendMode;
 static NSUInteger   sBatchedPolygonCount;
 static NSUInteger   sVertexBufferOffset;
 static AAPLVertex   *sVertexBufferPointer;
+static AAPLVertex   *sVertexBufferPointerStart;
+static AAPLVertex   *sVertexBufferPointerEdge;
+static size_t       sVertexBufferSize;
 
 static const NSUInteger kMaxBuffersInFlight = 3;
 static const size_t kAlignedUniformsSize = (sizeof(Uniforms) & ~0xFF) + 0x100;
@@ -53,12 +56,19 @@ void InitRenderingState()
     sBatchedPolygonCount = 0;
     sVertexBufferOffset = 0;
     sVertexBufferPointer = (AAPLVertex *)sMetalVertexBuffer.contents;
+    sVertexBufferPointerStart = sVertexBufferPointer;
+    sVertexBufferPointerEdge = (AAPLVertex *)((char *)sVertexBufferPointer + sVertexBufferSize);
     sPassCount = 0;
 }
 
 void Clear(const Color& color)
 {
-    // TODO: 未処理の頂点バッファが溜まっていれば破棄する処理を行う。
+    // 未処理の頂点バッファが溜まっていれば破棄する
+    if (sBatchedPolygonCount > 0) {
+        sBatchedPolygonCount = 0;
+        sVertexBufferPointer = sVertexBufferPointerStart;
+    }
+
     MTLRenderPassDescriptor *renderPassDescriptor = sMetalView.currentRenderPassDescriptor;
 
     if (renderPassDescriptor) {
@@ -87,7 +97,11 @@ void SetBlendMode(BlendMode blendMode)
 
 void FillTriangle(const Vector2& p1, const Vector2& p2, const Vector2& p3, const Color& c1, const Color& c2, const Color& c3)
 {
-    // TODO: ポリゴンの数が設定された最大個数を超えていないことをチェックする。
+    // ポリゴンの数が設定された最大個数を超えていないことをチェックする
+    if (sVertexBufferPointer + 3 > sVertexBufferPointerEdge) {
+        os_log(OS_LOG_DEFAULT, "[Error!!] Polygon count has exceeded limited memory size (max count is around %u).", METAL_MAX_POLYGON_COUNT);
+        exit(-1);
+    }
 
     sVertexBufferPointer->position.x = p1.x;
     sVertexBufferPointer->position.y = p1.y;
@@ -160,6 +174,7 @@ void FlushVertexRendering()
         sVertexBufferOffset += sizeof(AAPLVertex) * sBatchedPolygonCount * 3;
         sVertexBufferOffset = ((sVertexBufferOffset - 1) & ~0xff) + 0x100;
         sVertexBufferPointer = (AAPLVertex *)((char *)sMetalVertexBuffer.contents + sVertexBufferOffset);
+        sVertexBufferPointerStart = sVertexBufferPointer;
 
         sBatchedPolygonCount = 0;
     }
@@ -354,8 +369,8 @@ void FlushVertexRendering()
     view.sampleCount = 1;
 
     // 頂点データのバッファを用意する
-    size_t batchBufferFrameSize = sizeof(AAPLVertex) * METAL_MAX_POLYGON_COUNT * 3;
-    sMetalVertexBuffer = [_device newBufferWithLength:batchBufferFrameSize options:MTLResourceStorageModeShared];
+    sVertexBufferSize = sizeof(AAPLVertex) * METAL_MAX_POLYGON_COUNT * 3;
+    sMetalVertexBuffer = [_device newBufferWithLength:sVertexBufferSize options:MTLResourceStorageModeShared];
     sMetalVertexBuffer.label = @"MetalVertexBuffer";
 
     // シェーダを使ったパイプラインの用意

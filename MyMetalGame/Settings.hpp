@@ -9,6 +9,7 @@
 #ifndef Settings_hpp
 #define Settings_hpp
 
+// 1フレームで描画可能なポリゴン数の上限（アラインメントの関係で、この個数よりも少ない個数しか描画できない可能性があります）
 #define METAL_MAX_POLYGON_COUNT     10000
 
 #endif /* Settings_hpp */
