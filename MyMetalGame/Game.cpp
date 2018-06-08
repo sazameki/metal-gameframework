@@ -54,7 +54,7 @@ void Start()
 {
     Color c1 = Color::white;
     Color c2 = Color::blue;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 2000; i++) {
         Color color = Color::Lerp(c1, c2, i / 99.0);
         triangles.push_back(new Triangle(color));
     }
@@ -68,7 +68,11 @@ void Update()
         triangle->Step();
     }
 
-    Clear(Color::black);
+    if (Input::GetKey(KeyCode::Space)) {
+        Clear(Color::lightorange);
+    } else {
+        Clear(Color::black);
+    }
 
     SetBlendMode(BlendModeAlpha);
     if (Input::GetKey(KeyCode::A)) {
