@@ -186,24 +186,16 @@ struct Quaternion : public GMObject
     /// Vector4にこのクォータニオンの回転を適用したVector4を計算します。
     Vector4         operator*(const Vector4& vec) const;
 
-    /*!
-        operator/
-     */
+    /// このクォータニオンを与えられたクォータニオンで割ります。
     Quaternion      operator/(const Quaternion& quat) const;
     
-    /*!
-        operator/
-     */
+    /// このクォータニオンの各要素を与えられたスカラ値valueで割ります。
     Quaternion      operator/(float value) const;
 
-    /*!
-        operator+=
-     */
+    /// このクォータニオンの各要素に、与えられたクォータニオンの各要素を足し合わせます。
     Quaternion&     operator+=(const Quaternion& quat);
     
-    /*!
-        operator-=
-     */
+    /// このクォータニオンの各要素から、与えられたクォータニオンの各要素を引きます。
     Quaternion&     operator-=(const Quaternion& quat);
     
     /// このクォータニオンに、クォータニオンquatを掛けます。
