@@ -21,82 +21,45 @@ class Quaternion;
 /// 4次元ベクトルを表す構造体です。
 struct Vector4 : public GMObject
 {
+#pragma mark - Static 定数
 public:
-    /*!
-        @const  one
-        @unity-compatible   true
-     */
+    /// すべての要素が1の4次元ベクトル定数
     static const Vector4&    one;
 
-    /*!
-        @const  zero
-        @unity-compatible   true
-     */
+    /// すべての要素が0の4次元ベクトル定数
     static const Vector4&    zero;
     
-public:
+
 #pragma mark - Static 関数
-    /*!
-        @task   Static 関数
-     */
-    
-    /*!
-        Distance
-        @unity-compatible   true
-        2つのベクトル間の距離を返します。
-     */
+public:
+
+    /// 2つのベクトル間の距離を返します。
     static float    Distance(const Vector2& a, const Vector2& b);
 
-    /*!
-        Dot
-        @unity-compatible   true
-        2つのベクトルの内積を返します。
-     */
+    /// 2つのベクトルのドット積（内積）を返します。
     static float    Dot(const Vector4& lhs, const Vector4& rhs);
 
-    /*!
-        EaseIn
-     */
+    /// 2つのベクトルのEase-In補完を計算します。
     static Vector4  EaseIn(const Vector4& vec1, const Vector4& vec2, float amount);
 
-    /*!
-        EaseInOut
-     */
+    /// 2つのベクトルのEase-In-Out補完を計算します。
     static Vector4  EaseInOut(const Vector4& vec1, const Vector4& vec2, float amount);
 
-    /*!
-        EaseOut
-     */
+    /// 2つのベクトルのEase-Out補完を計算します。
     static Vector4  EaseOut(const Vector4& vec1, const Vector4& vec2, float amount);
 
-    /*!
-        Lerp
-        @unity-compatible   true
-        ベクトル a と b の間で t の値による線形補間を計算します。
-        パラメーター t は [0, 1] の範囲で制限されます。
-     */
+    /// ベクトルaとbの間でtの値による線形補間を計算します。
+    /// パラメーターtは[0,1]の範囲で制限されます。
     static Vector4  Lerp(const Vector4& vec1, const Vector4& vec2, float amount);
 
-    /*!
-        LerpUnclamped
-        @unity-compatible   true
-        ベクトル a と b の間で t の値による線形補間を計算します。
-        パラメーター t は [0, 1] の範囲で制限されます。
-     */
+    /// ベクトルaとbの間でtの値による線形補間を計算します。
+    /// パラメーターtは制限されません。
     static Vector4  LerpUnclamped(const Vector4& vec1, const Vector4& vec2, float amount);
 
-    /*!
-        Max
-        @unity-compatible   true
-        2つのベクトルの各成分の最大の要素からなるベクトルを返します。
-     */
+    /// 2つのベクトルの各成分の最大の要素からなるベクトルを返します。
     static Vector4  Max(const Vector4& vec1, const Vector4& vec2);
 
-    /*!
-        Min
-        @unity-compatible   true
-        2つのベクトルの各成分の最小の要素からなるベクトルを返します。
-     */
+    /// 2つのベクトルの各成分の最小の要素からなるベクトルを返します。
     static Vector4  Min(const Vector4& vec1, const Vector4& vec2);
 
     /*!

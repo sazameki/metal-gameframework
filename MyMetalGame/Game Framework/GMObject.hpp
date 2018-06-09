@@ -13,11 +13,7 @@
 #include <string>
 
 
-/*!
-    @class      GMObject
-    @group      System
-    @abstract   Game Framework内で扱うすべてのクラスの基底クラスです。
- */
+/// Game Framework内で扱うすべてのクラス・構造体の基底クラスです。
 class GMObject
 {
 public:

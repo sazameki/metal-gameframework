@@ -13,26 +13,29 @@
 #include "GMObject.hpp"
 
 
-/*
-    @class  Random
-    @group  Math
-    @abstract 乱数を生成するクラスです。
- 
-    <p><a href="http://www.jstatsoft.org/v08/i14/" target="_blank">XorShift</a> 法を 128bit で使って、疑似乱数を生成します。</p>
-    <p>乱数のシードは、ゲームの起動時に time() 関数（標準C言語ライブラリ）と getpid() 関数（POSIX.1規格）のリターン値を元にして設定されます。デモなどでのシーン再現のために乱数シードを保存する場合には、GetFirstSeed() メソッドを使ってシードを取得し、任意のタイミングで SetFirstSeed() メソッドを使ってシードを設定します。</p>
- */
-
+/// XorShift法で乱数を生成するクラスです。
 class Random : public GMObject
 {
 public:
+    /// 乱数シードを取得します。
     static unsigned GetSeed();
+
+    /// 乱数シードを設定します。
     static void     SetSeed(unsigned seed);
 
+    /// min以上max以下のfloat型の乱数を生成します。
     static float    FloatRange(float min, float max);
+
+    /// 0.0f以上1.0f以下のfloat型の乱数を生成します。
     static float    FloatValue();
 
+    /// min以上max以下の乱数を生成します。
     static int      IntRange(int min, int max);
+
+    /// 0以上INT_MAX未満のint型の乱数を生成します。
     static int      IntValue();
+
+    /// 0以上upper未満のint型の乱数を生成します。
     static int      IntValue(int upper);
 
     static void     __CleanUp();
