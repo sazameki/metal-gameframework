@@ -333,7 +333,6 @@ void FlushVertexRendering()
         desc.colorAttachments[0].destinationAlphaBlendFactor = MTLBlendFactorOne;
         desc.colorAttachments[0].alphaBlendOperation = MTLBlendOperationAdd;
     } else if (blendMode == BlendModeScreen) {
-        os_log(OS_LOG_DEFAULT, "screen-blend");
         // スクリーン合成
         desc.colorAttachments[0].blendingEnabled = YES;
         desc.colorAttachments[0].sourceRGBBlendFactor = MTLBlendFactorOneMinusDestinationColor;
