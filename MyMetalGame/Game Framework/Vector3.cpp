@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Jan 10, 2011.
-//  Copyright (c) 2011-2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2011-2018 Satoshi Numata. All rights reserved.
 //
 
 #include "Vector2.hpp"

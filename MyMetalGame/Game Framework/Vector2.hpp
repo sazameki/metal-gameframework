@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Jan 02, 2011.
-//  Copyright (c) 2011-2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2011-2018 Satoshi Numata. All rights reserved.
 //
 
 #ifndef __VECTOR2_HPP__
@@ -43,15 +43,6 @@ public:
     static const Vector2&    zero;
 
 
-#pragma mark - Public 変数
-public:
-    /// ベクトルのx成分
-    float x;
-
-    /// ベクトルのy成分
-    float y;
-
-
 #pragma mark - Static 関数
 public:
 
@@ -83,8 +74,8 @@ public:
     /// パラメーターtは[0,1]の範囲で制限されます。
     static Vector2  Lerp(const Vector2& a, const Vector2& b, float t);
 
-    /// ベクトル a と b の間で t の値による線形補間を計算します。
-    /// パラメーター t の範囲は制限されません。
+    /// ベクトルaとbの間でtの値による線形補間を計算します。
+    /// パラメーターtの範囲は制限されません。
     static Vector2  LerpUnclamped(const Vector2& a, const Vector2& b, float t);
 
     /// 2つのベクトルの各成分の最大の要素からなるベクトルを返します。
@@ -107,6 +98,15 @@ public:
 
     /// 2つのベクトルのSmoothStep補完を計算します。
     static Vector2  SmoothStep(const Vector2& a, const Vector2& b, float t);
+
+
+#pragma mark - Public 変数
+public:
+    /// ベクトルのx成分
+    float x;
+
+    /// ベクトルのy成分
+    float y;
 
 
 #pragma mark - コンストラクタ
