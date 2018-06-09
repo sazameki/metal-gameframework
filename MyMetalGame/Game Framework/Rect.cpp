@@ -27,13 +27,13 @@ Rect Rect::MinMaxRect(float xmin, float ymin, float xmax, float ymax)
     return Rect(xmin, ymin, xmax - xmin, ymax - ymin);
 }
 
-Vector2 Rect::NormalizedToPoint(Rect rectangle, Vector2 normalizedRectCoordinates)
+Vector2 Rect::NormalizedToPoint(const Rect& rectangle, const Vector2& normalizedRectCoordinates)
 {
     return Vector2(Mathf::Lerp(rectangle.x, rectangle.xMax(), normalizedRectCoordinates.x),
                    Mathf::Lerp(rectangle.y, rectangle.yMax(), normalizedRectCoordinates.y));
 }
 
-Vector2 Rect::PointToNormalized(Rect rectangle, Vector2 point)
+Vector2 Rect::PointToNormalized(const Rect& rectangle, const Vector2& point)
 {
     return Vector2(Mathf::InverseLerp(rectangle.x, rectangle.xMax(), point.x),
                    Mathf::InverseLerp(rectangle.y, rectangle.yMax(), point.y));
@@ -212,24 +212,6 @@ const char* Rect::c_str(const std::string& format) const
 
 #pragma mark - 演算子のオーバーロード
 
-bool Rect::operator==(const Rect& rect) const
-{
-    if (fabsf(x - rect.x) >= 9.99999944E-11f) return false;
-    if (fabsf(y - rect.y) >= 9.99999944E-11f) return false;
-    if (fabsf(width - rect.width) >= 9.99999944E-11f) return false;
-    if (fabsf(height - rect.height) >= 9.99999944E-11f) return false;
-    return true;
-}
-
-bool Rect::operator!=(const Rect& rect) const
-{
-    if (fabsf(x - rect.x) >= 9.99999944E-11f) return true;
-    if (fabsf(y - rect.y) >= 9.99999944E-11f) return true;
-    if (fabsf(width - rect.width) >= 9.99999944E-11f) return true;
-    if (fabsf(height - rect.height) >= 9.99999944E-11f) return true;
-    return false;
-}
-
 Rect Rect::operator+(const Vector2& vec) const
 {
     Rect ret(*this);
@@ -260,4 +242,21 @@ Rect& Rect::operator-=(const Vector2& vec)
     return *this;
 }
 
+bool Rect::operator==(const Rect& rect) const
+{
+    if (fabsf(x - rect.x) >= 9.99999944E-11f) return false;
+    if (fabsf(y - rect.y) >= 9.99999944E-11f) return false;
+    if (fabsf(width - rect.width) >= 9.99999944E-11f) return false;
+    if (fabsf(height - rect.height) >= 9.99999944E-11f) return false;
+    return true;
+}
+
+bool Rect::operator!=(const Rect& rect) const
+{
+    if (fabsf(x - rect.x) >= 9.99999944E-11f) return true;
+    if (fabsf(y - rect.y) >= 9.99999944E-11f) return true;
+    if (fabsf(width - rect.width) >= 9.99999944E-11f) return true;
+    if (fabsf(height - rect.height) >= 9.99999944E-11f) return true;
+    return false;
+}
 

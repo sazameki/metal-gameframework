@@ -23,23 +23,14 @@ struct Rect : public GMObject
 {
 #pragma mark - Static 関数
 
-    /*!
-        MinMaxRect
-        @unity-compatible   true
-     */
+    /// X方向・Y方向ともに最小値と最大値を指定して、矩形情報を作成します。
     static Rect     MinMaxRect(float xmin, float ymin, float xmax, float ymax);
 
-    /*!
-        NormalizedToPoint
-        @unity-compatible   true
-     */
-    static Vector2  NormalizedToPoint(Rect rectangle, Vector2 normalizedRectCoordinates);
+    /// 正規化座標を指定して矩形内での位置を返します。
+    static Vector2  NormalizedToPoint(const Rect& rect, const Vector2& normalizedRectCoordinates);
 
-    /*!
-        PointToNormalized
-        @unity-compatible   true
-     */
-    static Vector2  PointToNormalized(Rect rectangle, Vector2 point);
+    /// 指定された座標に対応する正規化座標を返します。
+    static Vector2  PointToNormalized(const Rect& rect, const Vector2& point);
 
 
 #pragma mark - Public 変数
@@ -104,24 +95,16 @@ struct Rect : public GMObject
     /// この矩形のサイズ情報をVector2としてリターンします。
     Vector2     Size() const;
 
-    /*!
-        xMax
-     */
+    /// この矩形のX方向の最大値をリターンします。
     float       xMax() const;
-    
-    /*!
-        yMax
-     */
+
+    /// この矩形のY方向の最大値をリターンします。
     float       yMax() const;
     
-    /*!
-        xMin
-     */
+    /// この矩形のX方向の最小値をリターンします。
     float       xMin() const;
     
-    /*!
-        yMin
-     */
+    /// この矩形のY方向の最小値をリターンします。
     float       yMin() const;
     
     /// ベクトルの各要素を見やすくフォーマットした文字列を返します。
@@ -139,40 +122,27 @@ struct Rect : public GMObject
 
 #pragma mark - 演算子のオーバーロード
 
-    /*!
-        operator=
-     */
-    Rect&   operator=(const Rect& rect);
+    /// この矩形に矩形rectの内容をコピーします。
+    Rect&       operator=(const Rect& rect);
     
-    /*!
-        operator==
-     */
-    bool        operator==(const Rect& rect) const;
-    
-    /*!
-        operator!=
-     */
-    bool        operator!=(const Rect& rect) const;
-    
-    /*!
-        operator+
-     */
+    /// この矩形の始点座標にベクトルvecの値を足し合わせた矩形を作成します。
     Rect        operator+(const Vector2& vec) const;
 
-    /*!
-        operator-
-     */
+    /// この矩形の始点座標からベクトルvecの値を引いた矩形を作成します。
     Rect        operator-(const Vector2& vec) const;
 
-    /*!
-        operator+=
-     */
+    /// この矩形の始点座標にベクトルvecの値を足し合わせます。
     Rect&       operator+=(const Vector2& vec);
     
-    /*!
-        operator-=
-     */
+    /// この矩形の始点座標からベクトルvecの値を引きます。
     Rect&       operator-=(const Vector2& vec);
+
+    /// 与えられた矩形がこの矩形と等しいかを判定します。
+    bool        operator==(const Rect& rect) const;
+
+    /// 与えられた矩形がこの矩形と等しくないかを判定します。
+    bool        operator!=(const Rect& rect) const;
+
 
 };  // struct Rect
     
