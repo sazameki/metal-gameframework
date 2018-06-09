@@ -140,7 +140,6 @@ struct Vector3 : public GMObject
     /// コンストラクタ。x, y, zの要素を指定して初期化します。
     Vector3(float x, float y, float z);
     
-
     /// コンストラクタ。Vector2のx,y成分にzの要素の値を合わせたVector3を作成します。
     Vector3(const Vector2& vec, float z);
     

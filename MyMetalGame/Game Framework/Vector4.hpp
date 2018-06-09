@@ -139,90 +139,55 @@ struct Vector4 : public GMObject
 
 #pragma mark - 演算子のオーバーロード
 
-    /*!
-        operator=
-     */
+    /// このベクトルにベクトルvecの内容をコピーします。
     Vector4&  operator=(const Vector4& vec);
     
-    
-    /*!
-        operator-
-     */
+    /// このベクトルの各要素に-1を掛けたベクトルを生成します。
     Vector4   operator-() const;
     
-    /*!
-        operator+
-     */
+    /// このベクトルとベクトルvecの各要素を足し合わせたベクトルを生成します。
     Vector4   operator+(const Vector4& vec) const;
     
-    /*!
-        operator-
-     */
+    /// このベクトルからベクトルvecの各要素を引いたベクトルを生成します。
     Vector4   operator-(const Vector4& vec) const;
     
-    /*!
-        operator*
-     */
+    /// 2つのベクトルの各要素同士を掛け合わせたベクトルを生成します。
     Vector4   operator*(const Vector4& vec) const;
     
-    /*!
-        operator/
-     */
+    /// このベクトルの各要素を、ベクトルvecの同じ要素で割ったベクトルを生成します。
     Vector4   operator/(const Vector4& vec) const;
     
-    /*!
-        operator*
-     */
+    /// このベクトルの各要素にスカラ値valueを掛け合わせたベクトルを生成します。
     Vector4   operator*(float value) const;
     
-    /*!
-        operator/
-     */
+    /// このベクトルの各要素をスカラ値valueで割ったベクトルを生成します。
     Vector4   operator/(float value) const;
 
-
+    /// スカラ値とベクトルの掛け算を計算します。
     friend Vector4 operator*(float value, const Vector4& vec);
 
-    
-    /*!
-        operator+=
-     */
+    /// このベクトルの各要素に、ベクトルvecの同じ要素の値を足し合わせます。
     Vector4&  operator+=(const Vector4& vec);
     
-    /*!
-        operator-=
-     */
+    /// このベクトルの各要素から、ベクトルvecの同じ要素の値を引きます。
     Vector4&  operator-=(const Vector4& vec);
     
-    /*!
-        operator*=
-     */
+    /// このベクトルの各要素に、ベクトルvecの同じ要素の値を掛け合わせます。
     Vector4&  operator*=(const Vector4& vec);
     
-    /*!
-        operator/=
-     */
+    /// このベクトルの各要素を、ベクトルvecの同じ要素の値で割ります。
     Vector4&  operator/=(const Vector4& vec);
     
-    /*!
-        operator*=
-     */
+    /// このベクトルの各要素にスカラ値valueを掛けます。
     Vector4&  operator*=(float value);
     
-    /*!
-        operator/=
-     */
+    /// このベクトルの各要素をスカラ値valueで割ります。
     Vector4&  operator/=(float value);
-    
-    
-    /*!
-        operator==
-     */
+
+    /// 与えられたベクトルがこのベクトルと等しいかを判定します。
     bool        operator==(const Vector4& vec) const;
     
-    /*!
-        operator!=
-     */
+    /// 与えられたベクトルがこのベクトルと等しくないかを判定します。
     bool        operator!=(const Vector4& vec) const;
 
     /// [0]や[1]や[2]や[3]を使用して、x成分, y成分, z成分, w成分にアクセスします。

@@ -20,6 +20,7 @@
 typedef unsigned long long  KeyCodeType;
 
 
+/// キーコードの定数をまとめて管理するための構造体
 struct KeyCode
 {
     /// 上向きの矢印キーを表す定数です。
@@ -203,7 +204,7 @@ struct KeyCode
 };
 
 
-/// キーボードとマウスの入力を管理するためのクラスです。
+/// キーボードとマウスの入力を管理するためのクラス
 class Input : public GMObject
 {
     static KeyCodeType  sKeyState;
@@ -222,14 +223,22 @@ class Input : public GMObject
     static bool         sIsMouseUpTriggeredRight;
 
 public:
+
+    /// 仮想軸の値を取得します。軸の名前には "Horizontal" または "Vertical" を指定します。
     static float    GetAxis(const std::string& axisName);
+
+    /// 仮想軸の値を取得します。軸の名前には "Horizontal" または "Vertical" を指定します。
+    /// 平滑化フィルタがかかっていない生の値が取得できます。
     static float    GetAxisRaw(const std::string& axisName);
+
+    /// すべての入力をリセットし、すべての軸の値を0にします。
     static void     ResetInputAxes();
 
 
 #pragma mark - キーボードの管理
 public:
-    /// キーボードの状態を確認します。
+
+    /// キーボードの状態を確認し、キーが押されているかどうかをリターンします。
     static bool     GetKey(KeyCodeType keyMask);
 
     /// キーボードの状態を確認し、直前のフレームでキーが押されたかどうかをリターンします。
