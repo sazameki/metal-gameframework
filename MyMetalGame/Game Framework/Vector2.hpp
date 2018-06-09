@@ -20,353 +20,197 @@ struct Vector3;
     
 /// 2次元ベクトルを表す構造体です。
 struct Vector2 : public GMObject
-{    
+{
+#pragma mark - Static 定数
 public:
-    /*!
-        @const  down
-        @unity-compatible   true
-        要素が(0, -1)となるVector2の定数です。
-     */
+
+    /// 要素が(0, -1)となるVector2の定数です。
     static const Vector2&    down;
     
-    /*!
-        @const  left
-        @unity-compatible   true
-        要素が(-1, 0)となるVector2の定数です。
-     */
+    /// 要素が(-1, 0)となるVector2の定数です。
     static const Vector2&    left;
     
-    /*!
-        @const  one
-        @unity-compatible   true
-        要素が(1, 1)となるVector2の定数です。
-     */
+    /// 要素が(1, 1)となるVector2の定数です。
     static const Vector2&    one;
 
-    /*!
-        @const  right
-        @unity-compatible   true
-        要素が(1, 0)となるVector2の定数です。
-     */
+    /// 要素が(1, 0)となるVector2の定数です。
     static const Vector2&    right;
 
-    /*!
-        @const  up
-        @unity-compatible   true
-        要素が(0, 1)となるVector2の定数です。
-     */
+    /// 要素が(0, 1)となるVector2の定数です。
     static const Vector2&    up;
 
-    /*!
-        @const  zero
-        @unity-compatible   true
-        要素が(0, 0)となるVector2の定数です。
-     */
+    /// 要素が(0, 0)となるVector2の定数です。
     static const Vector2&    zero;
 
+
+#pragma mark - Public 変数
 public:
-    /*!
-        @var    x
-        ベクトルのx成分
-     */
+    /// ベクトルのx成分
     float x;
 
-    /*!
-        @var    y
-        ベクトルのy成分
-     */
+    /// ベクトルのy成分
     float y;
-    
-    /*!
-        @task   Static 関数
-     */
 
-    /*!
-        Angle
-        @unity-compatible   true
-        2点間の角度を返します。
-     */
+
+#pragma mark - Static 関数
+public:
+
+    /// 2点間の角度を返します。
     static float    Angle(const Vector2& from, const Vector2& to);
 
-    /*!
-        ClampMagnitude
-        @unity-compatible   true
-        大きさをmaxLengthにクランプしたベクトルを返します。
-     */
+    /// 大きさをmaxLengthにクランプしたベクトルを返します。
     static Vector2  ClampMagnitude(const Vector2& vector, float maxLength);
     
-    /*!
-        Cross
-        2つのベクトルの外積を返します。
-     */
+    /// 2つのベクトルのクロス積（外積）を返します。
     static float    Cross(const Vector2& lhs, const Vector2& rhs);
 
-    /*!
-        Distance
-        @unity-compatible   true
-        2つのベクトル間の距離を返します。
-     */
+    /// 2つのベクトル間の距離を返します。
     static float    Distance(const Vector2& a, const Vector2& b);
 
-    /*!
-        Dot
-        @unity-compatible   true
-        2つのベクトルの内積を返します。
-     */
+    /// 2つのベクトルのドット積（内積）を返します。
     static float    Dot(const Vector2& lhs, const Vector2& rhs);
     
-    /*!
-        EaseIn
-     */
+    /// 2つのベクトルのEase-In補完を計算します。
     static Vector2  EaseIn(const Vector2& a, const Vector2& b, float t);
 
-    /*!
-        EaseInOut
-     */
+    /// 2つのベクトルのEase-In-Out補完を計算します。
     static Vector2  EaseInOut(const Vector2& a, const Vector2& b, float t);
 
-    /*!
-        EaseOut
-     */
+    /// 2つのベクトルのEase-Out補完を計算します。
     static Vector2  EaseOut(const Vector2& a, const Vector2& b, float t);
     
-    /*!
-        Lerp
-        @unity-compatible   true
-        ベクトル a と b の間で t の値による線形補間を計算します。
-        パラメーター t は [0, 1] の範囲で制限されます。
-     */
+    /// ベクトルaとbの間でtの値による線形補間を計算します。
+    /// パラメーターtは[0,1]の範囲で制限されます。
     static Vector2  Lerp(const Vector2& a, const Vector2& b, float t);
 
-    /*!
-        LerpUnclamped
-        @unity-compatible   true
-        ベクトル a と b の間で t の値による線形補間を計算します。
-        パラメーター t の範囲は制限されません。
-     */
+    /// ベクトル a と b の間で t の値による線形補間を計算します。
+    /// パラメーター t の範囲は制限されません。
     static Vector2  LerpUnclamped(const Vector2& a, const Vector2& b, float t);
 
-    /*!
-        Max
-        @unity-compatible   true
-        2つのベクトルの各成分の最大の要素からなるベクトルを返します。
-     */
+    /// 2つのベクトルの各成分の最大の要素からなるベクトルを返します。
     static Vector2  Max(const Vector2& a, const Vector2& b);
     
-    /*!
-        Min
-        @unity-compatible   true
-        2つのベクトルの各成分の最小の要素からなるベクトルを返します。
-     */
+    /// 2つのベクトルの各成分の最小の要素からなるベクトルを返します。
     static Vector2  Min(const Vector2& a, const Vector2& b);
-    
-    /*!
-        MoveTowards
-        現在位置をターゲットの方向に移動させます。
-     */
+
+    /// 現在位置をターゲットの方向に移動させます。
     static Vector2  MoveTowards(const Vector2& current, const Vector2& target, float maxDistanceDelta);
     
-    /*!
-        Reflect
-        法線を使って反射させたベクトルを返します。
-     */
+    /// 法線を使って反射させたベクトルを返します。
     static Vector2  Reflect(const Vector2& inDirection, const Vector2& inNormal);
 
-    /*!
-        Scale
-        @unity-compatible   true
-        2つのベクトルの各成分を乗算します。
-     */
+    /// 2つのベクトルの各成分を乗算します。
     static Vector2   Scale(const Vector2& a, const Vector2& b);
 
-    /*!
-        SmoothDamp
-        @unity-compatible   true
-        ベクトルを指定されたゴールに徐々に近づけていきます。
-     */
+    /// ベクトルを指定されたゴールに徐々に近づけていきます。
     static Vector2  SmoothDamp(const Vector2& current, const Vector2& target, Vector2& currentVelocity, float smoothTime, float maxSpeed, float deltaTime);
-    
+
+    /// 2つのベクトルのSmoothStep補完を計算します。
     static Vector2  SmoothStep(const Vector2& a, const Vector2& b, float t);
 
 
-    /*!
-        @task   コンストラクタ
-     */
-    
-    /*!
-        Vector2
-        @unity-compatible   false
-     */
+#pragma mark - コンストラクタ
+public:
+
+    /// コンストラクタ。すべての要素を0で初期化します。
     Vector2();
     
-    /*!
-        Vector2
-        @unity-compatible   true
-     */
+    /// コンストラクタ。x, yの要素を指定して初期化します。
     Vector2(float x, float y);
     
-    /*!
-        Vector2
-        @unity-compatible   false
-     */
+    /// コピーコンストラクタ
     Vector2(const Vector2& vec);
 
     
-    /*!
-        Public 関数
-     */
-    
-    /*!
-        Magnitude
-        @unity-compatible   true
-        ベクトルの長さを取得します。
-     */
+#pragma mark - Public 関数
+public:
+
+    /// ベクトルの長さを取得します。
     float       Magnitude() const;
     
-    /*!
-        normalized
-        @unity-compatible   true
-        大きさを1に正規化したベクトルを返します。
-     */
+    /// 大きさを1に正規化したベクトルを返します。
     Vector2     Normalized() const;
     
-    /*!
-        Normalize
-        @unity-compatible   true
-        このベクトルの大きさを1に正規化します。
-     */
+    /// このベクトルの大きさを1に正規化します。
     void        Normalize();
 
-    /*!
-        SqrMagnitude
-        @unity-compatible   true
-        ベクトルの長さの2乗を取得します。
-     */
+    /// ベクトルの長さの2乗を取得します。
     float       SqrMagnitude() const;
     
-    /*!
-        Set
-        @unity-compatible   true
-        既存の Vector2 に x、y の成分を設定します。
-     */
+    /// このベクトルのx, yの成分を設定します。
     void        Set(float x, float y);
 
-    /*!
-        ToString
-        ベクトルの各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// ベクトルの各要素を見やすくフォーマットした文字列を返します。
     std::string ToString() const override;
 
-    /*!
-        ToString
-        各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットした文字列を返します。
     std::string ToString(const std::string& format) const;
 
-    /*!
-        c_str
-        ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str() const override;
 
-    /*!
-        c_str
-        各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str(const std::string& format) const;
 
+
+#pragma mark - 演算子のオーバーロード
 public:
-    /*!
-        @task   演算子のオーバーロード
-     */
-    
-    /*!
-        operator=
-     */
+
+    /// このベクトルにベクトルvecの内容をコピーします。
     Vector2& operator=(const Vector2& vec);
-        
-    /*!
-        operator-
-     */
+
+    /// このベクトルの各要素に-1を掛けたベクトルを生成します。
     Vector2 operator-() const;
     
-    /*!
-        operator+
-     */
+    /// このベクトルとベクトルvecの各要素を足し合わせたベクトルを生成します。
     Vector2 operator+(const Vector2& vec) const;
     
-    /*!
-        operator-
-     */
+    /// このベクトルからベクトルvecの各要素を引いたベクトルを生成します。
     Vector2 operator-(const Vector2& vec) const;
     
-    /*!
-        operator*
-     */
+    /// 2つのベクトルの各要素同士を掛け合わせたベクトルを生成します。
     Vector2 operator*(const Vector2& vec) const;
     
-    /*!
-        operator/
-     */
+    /// このベクトルの各要素を、ベクトルvecの同じ要素で割ったベクトルを生成します。
     Vector2 operator/(const Vector2& vec) const;
     
-    /*!
-        operator*
-     */
+    /// このベクトルの各要素にスカラ値valueを掛け合わせたベクトルを生成します。
     Vector2 operator*(float value) const;
     
-    /*!
-        operator/
-     */
+    /// このベクトルの各要素をスカラ値valueで割ったベクトルを生成します。
     Vector2 operator/(float value) const;
-    
+
+    /// スカラ値とベクトルの掛け算を計算します。
     friend Vector2 operator*(float value, const Vector2& vec);
+
+    /// このベクトルの各要素に、ベクトルvecの同じ要素の値を足し合わせます。
+    Vector2&    operator+=(const Vector2& vec);
     
+    /// このベクトルの各要素から、ベクトルvecの同じ要素の値を引きます。
+    Vector2&    operator-=(const Vector2& vec);
     
-    /*!
-        operator+=
-     */
-    Vector2& operator+=(const Vector2& vec);
+    /// このベクトルの各要素に、ベクトルvecの同じ要素の値を掛け合わせます。
+    Vector2&    operator*=(const Vector2& vec);
     
-    /*!
-        operator-=
-     */
-    Vector2& operator-=(const Vector2& vec);
+    /// このベクトルの各要素を、ベクトルvecの同じ要素の値で割ります。
+    Vector2&    operator/=(const Vector2& vec);
     
-    /*!
-        operator*=
-     */
-    Vector2& operator*=(const Vector2& vec);
+    /// このベクトルの各要素にスカラ値valueを掛けます。
+    Vector2&    operator*=(float value);
     
-    /*!
-        operator/=
-     */
-    Vector2& operator/=(const Vector2& vec);
+    /// このベクトルの各要素をスカラ値valueで割ります。
+    Vector2&    operator/=(float value);
     
-    /*!
-        operator*=
-     */
-    Vector2& operator*=(float value);
-    
-    /*!
-        operator/=
-     */
-    Vector2& operator/=(float value);
-    
-    /*!
-        operator==
-     */
+    /// 与えられたベクトルがこのベクトルと等しいかを判定します。
     bool        operator==(const Vector2& vec) const;
     
-    /*!
-        operator!=
-     */
+    /// 与えられたベクトルがこのベクトルと等しくないかを判定します。
     bool        operator!=(const Vector2& vec) const;
     
     /// [0]や[1]を使用して、x成分やy成分にアクセスします。
     float&      operator[](int index);
 
-    /// Vector3に変換します。z要素はゼロになります。
+    /// このベクトルをVector3に変換します。z要素はゼロになります。
     operator Vector3() const;
 
 };
