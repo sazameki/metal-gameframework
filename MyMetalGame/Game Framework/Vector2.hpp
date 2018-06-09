@@ -60,21 +60,21 @@ struct Vector2 : public GMObject
     static float    Dot(const Vector2& lhs, const Vector2& rhs);
     
     /// 2つのベクトルのEase-In補完を計算します。
-    static Vector2  EaseIn(const Vector2& a, const Vector2& b, float t);
+    static Vector2  EaseIn(const Vector2& vec1, const Vector2& vec2, float t);
 
     /// 2つのベクトルのEase-In-Out補完を計算します。
-    static Vector2  EaseInOut(const Vector2& a, const Vector2& b, float t);
+    static Vector2  EaseInOut(const Vector2& vec1, const Vector2& vec2, float t);
 
     /// 2つのベクトルのEase-Out補完を計算します。
-    static Vector2  EaseOut(const Vector2& a, const Vector2& b, float t);
+    static Vector2  EaseOut(const Vector2& vec1, const Vector2& vec2, float t);
     
     /// ベクトルaとbの間でtの値による線形補間を計算します。
-    /// パラメーターtは[0,1]の範囲で制限されます。
-    static Vector2  Lerp(const Vector2& a, const Vector2& b, float t);
+    /// パラメータtは[0,1]の範囲で制限されます。
+    static Vector2  Lerp(const Vector2& vec1, const Vector2& vec2, float t);
 
     /// ベクトルaとbの間でtの値による線形補間を計算します。
-    /// パラメーターtの範囲は制限されません。
-    static Vector2  LerpUnclamped(const Vector2& a, const Vector2& b, float t);
+    /// パラメータtの範囲は制限されません。
+    static Vector2  LerpUnclamped(const Vector2& vec1, const Vector2& vec2, float t);
 
     /// 2つのベクトルの各成分の最大の要素からなるベクトルを返します。
     static Vector2  Max(const Vector2& a, const Vector2& b);
@@ -95,7 +95,7 @@ struct Vector2 : public GMObject
     static Vector2  SmoothDamp(const Vector2& current, const Vector2& target, Vector2& currentVelocity, float smoothTime, float maxSpeed, float deltaTime);
 
     /// 2つのベクトルのSmoothStep補完を計算します。
-    static Vector2  SmoothStep(const Vector2& a, const Vector2& b, float t);
+    static Vector2  SmoothStep(const Vector2& vec1, const Vector2& vec2, float t);
 
 
 #pragma mark - Public 変数
@@ -153,25 +153,25 @@ struct Vector2 : public GMObject
     /// このベクトルにベクトルvecの内容をコピーします。
     Vector2& operator=(const Vector2& vec);
 
-    /// このベクトルの各要素に-1を掛けたベクトルを生成します。
+    /// このベクトルの各要素に-1を掛けたベクトルを作成します。
     Vector2 operator-() const;
     
-    /// このベクトルとベクトルvecの各要素を足し合わせたベクトルを生成します。
+    /// このベクトルとベクトルvecの各要素を足し合わせたベクトルを作成します。
     Vector2 operator+(const Vector2& vec) const;
     
-    /// このベクトルからベクトルvecの各要素を引いたベクトルを生成します。
+    /// このベクトルからベクトルvecの各要素を引いたベクトルを作成します。
     Vector2 operator-(const Vector2& vec) const;
     
-    /// 2つのベクトルの各要素同士を掛け合わせたベクトルを生成します。
+    /// 2つのベクトルの各要素同士を掛け合わせたベクトルを作成します。
     Vector2 operator*(const Vector2& vec) const;
     
-    /// このベクトルの各要素を、ベクトルvecの同じ要素で割ったベクトルを生成します。
+    /// このベクトルの各要素を、ベクトルvecの同じ要素で割ったベクトルを作成します。
     Vector2 operator/(const Vector2& vec) const;
     
-    /// このベクトルの各要素にスカラ値valueを掛け合わせたベクトルを生成します。
+    /// このベクトルの各要素にスカラ値valueを掛け合わせたベクトルを作成します。
     Vector2 operator*(float value) const;
     
-    /// このベクトルの各要素をスカラ値valueで割ったベクトルを生成します。
+    /// このベクトルの各要素をスカラ値valueで割ったベクトルを作成します。
     Vector2 operator/(float value) const;
 
     /// スカラ値とベクトルの掛け算を計算します。

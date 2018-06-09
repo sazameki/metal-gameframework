@@ -45,57 +45,44 @@ struct Quaternion : public GMObject
     static Quaternion   Euler(const Vector3& euler);
 
     /// 2つのクォータニオンの間でEase-In補完を計算します。
-    static Quaternion   EaseIn(const Quaternion& a, const Quaternion& b, float t);
+    static Quaternion   EaseIn(const Quaternion& q1, const Quaternion& q2, float t);
     
     /// 2つのクォータニオンの間でEase-In-Out補完を計算します。
-    static Quaternion   EaseInOut(const Quaternion& a, const Quaternion& b, float t);
+    static Quaternion   EaseInOut(const Quaternion& q1, const Quaternion& q2, float t);
     
     /// 2つのクォータニオンの間でEase-Out補完を計算します。
-    static Quaternion   EaseOut(const Quaternion& a, const Quaternion& b, float t);
+    static Quaternion   EaseOut(const Quaternion& q1, const Quaternion& q2, float t);
 
-    /*!
-        FromToRotation
-        @unity-compatible   true
-     */
+    /// fromDirのベクトルをtoDirのベクトルに回転させるクォータニオンを作成します。
     static Quaternion   FromToRotation(const Vector3& fromDir, const Vector3& toDir);
 
     /// クォータニオンの正反対の値となる値を返します。
     static Quaternion   Inverse(const Quaternion& rotation);
 
     /// 2つのクォータニオンの間で線形補完を計算します。
-    /// パラメーターtの値は、[0,1]の範囲に制限されます。
-    static Quaternion   Lerp(const Quaternion& a, const Quaternion& b, float t);
+    /// パラメータtの値は、[0,1]の範囲に制限されます。
+    static Quaternion   Lerp(const Quaternion& q1, const Quaternion& q2, float t);
 
     /// 2つのクォータニオンの間で線形補完を計算します。
-    /// パラメーターtの値は制限されません。
-    static Quaternion   LerpUnclamped(const Quaternion& a, const Quaternion& b, float t);
+    /// パラメータtの値は制限されません。
+    static Quaternion   LerpUnclamped(const Quaternion& q1, const Quaternion& q2, float t);
 
-    /*!
-        LookRotation
-        @unity-compatible   true (unsupported)
-     */
+    /// 方向ベクトルupwardsを軸として、forwardの方向を向くように回転させるクォータニオンを作成します。
     static Quaternion   LookRotation(const Vector3& forward, const Vector3& upwards = Vector3::up);
 
-    /*!
-        RotateTowards
-        @unity-compatible   true
-     */
+    /// fromの回転をtoの回転に変えるようなクォータニオンを作成します。
     static Quaternion   RotateTowards(const Quaternion& from, const Quaternion& to, float maxDegreesDelta);
 
-    /*!
-        Slerp
-        @unity-compatible   true
-     */
-    static Quaternion   Slerp(const Quaternion& a, const Quaternion& b, float t);
+    /// 2つのクォータニオンの球面線形補間を計算します。
+    /// パラメータtは[0,1]の範囲にクランプされます。
+    static Quaternion   Slerp(const Quaternion& q1, const Quaternion& q2, float t);
 
-    /*!
-        SlerpUnclamped
-        @unity-compatible   true
-     */
-    static Quaternion   SlerpUnclamped(const Quaternion& a, const Quaternion& b, float t);
+    /// 2つのクォータニオンの球面線形補間を計算します。
+    /// パラメータtの値は制限されません。
+    static Quaternion   SlerpUnclamped(const Quaternion& q1, const Quaternion& q2, float t);
 
     /// 2つのクォータニオンの間でSmoothStep補完を計算します。
-    static Quaternion   SmoothStep(const Quaternion& a, const Quaternion& b, float t);
+    static Quaternion   SmoothStep(const Quaternion& q1, const Quaternion& q2, float t);
 
     
 #pragma mark - Public 変数
@@ -172,49 +159,31 @@ struct Quaternion : public GMObject
 
 #pragma mark - 演算子のオーバーロード
 
-    /*!
-        operator=
-     */
-    Quaternion&     operator=(const Quaternion& quat);    
+    /// このクォータニオンにクォータニオンquatの内容をコピーします。
+    Quaternion&     operator=(const Quaternion& quat);
     
-    /*!
-        operator-
-     */
+    /// このクォータニオンの各要素に-1を掛けたクォータニオンを作成します。
     Quaternion      operator-() const;
     
-    /*!
-        operator+
-     */
+    /// このクォータニオンの各要素に、クォータニオンquatの各要素を足し合わせたクォータニオンを作成します。
     Quaternion      operator+(const Quaternion& quat) const;
     
-    /*!
-        operator-
-     */
+    /// このクォータニオンの各要素から、クォータニオンquatの各要素を引いたクォータニオンを作成します。
     Quaternion      operator-(const Quaternion& quat) const;
     
-    /*!
-        operator*
-     */
+    /// このクォータニオンにクォータニオンquatを掛け合わせたクォータニオンを作成します。
     Quaternion      operator*(const Quaternion& quat) const;
     
-    /*!
-        operator*
-     */
+    /// このクォータニオンの各要素に、スカラ値scaleを掛けたクォータニオンを作成します。
     Quaternion      operator*(float scale) const;
 
-    /*!
-        operator*
-     */
+    /// Vector2にこのクォータニオンの回転を適用したVector2を計算します。
     Vector2         operator*(const Vector2& vec) const;
 
-    /*!
-        operator*
-     */
+    /// Vector3にこのクォータニオンの回転を適用したVector3を計算します。
     Vector3         operator*(const Vector3& vec) const;
 
-    /*!
-        operator*
-     */
+    /// Vector4にこのクォータニオンの回転を適用したVector4を計算します。
     Vector4         operator*(const Vector4& vec) const;
 
     /*!
@@ -237,34 +206,22 @@ struct Quaternion : public GMObject
      */
     Quaternion&     operator-=(const Quaternion& quat);
     
-    /*!
-        operator*=
-     */
+    /// このクォータニオンに、クォータニオンquatを掛けます。
     Quaternion&     operator*=(const Quaternion& quat);
     
-    /*!
-        operator=
-     */
+    /// このクォータニオンの各要素に、スカラ値valueを掛けます。
     Quaternion&     operator*=(float scale);
     
-    /*!
-        operator/=
-     */
+    /// このクォータニオンを、クォータニオンquatで割ります。
     Quaternion&     operator/=(const Quaternion& quat);
-    
-    /*!
-        operator/=
-     */
+
+    /// このクォータニオンの各要素を、スカラ値valueで割ります。
     Quaternion&     operator/=(float value);
 
-    /*!
-        operator==
-     */
+    /// 与えられたクォータニオンがこのクォータニオンと等しいかを判定します。
     bool        operator==(const Quaternion& quat) const;
     
-    /*!
-        operator!=
-     */
+    /// 与えられたクォータニオンがこのクォータニオンと等しくないかを判定します。
     bool        operator!=(const Quaternion& quat) const;
 
     /// クォータニオンの各要素の値をそのままコピーしたVector4構造体を作成します。

@@ -114,13 +114,13 @@ struct Color : public GMObject
 #pragma mark - Static 関数
 
     /// 2つの色の間を Ease-In 補間した色を作成します。
-    static Color    EaseIn(const Color& a, const Color& b, float t);
+    static Color    EaseIn(const Color& color1, const Color& color2, float t);
     
     /// 2つの色の間を Ease-In-Out 補間した色を作成します。
-    static Color    EaseInOut(const Color& a, const Color& b, float t);
+    static Color    EaseInOut(const Color& color1, const Color& color2, float t);
 
     /// 2つの色の間を Ease-Out 補間した色を作成します。
-    static Color    EaseOut(const Color& a, const Color& b, float t);
+    static Color    EaseOut(const Color& color1, const Color& color2, float t);
 
     /// HSV 色空間の値から RGB 色空間の色を作成します。
     static Color    HSVToRGB(float H, float S, float V);
@@ -129,17 +129,17 @@ struct Color : public GMObject
     /// hdr フラグが true の場合、各色要素は 0.0〜1.0 の範囲にクランプされません。
     static Color    HSVToRGB(float H, float S, float V, bool hdr);
 
-    /// 2つの色の間を線形補間した色を作成します。パラメーター t は[0, 1]の範囲に制限されます。
-    static Color    Lerp(const Color& a, const Color& b, float t);
+    /// 2つの色の間を線形補間した色を作成します。パラメータtは[0, 1]の範囲に制限されます。
+    static Color    Lerp(const Color& color1, const Color& color2, float t);
 
-    /// 2つの色の間を線形補間した色を作成します。パラメーター t の範囲は制限されません。
-    static Color    LerpUnclamped(const Color& a, const Color& b, float t);
+    /// 2つの色の間を線形補間した色を作成します。パラメータtの範囲は制限されません。
+    static Color    LerpUnclamped(const Color& color1, const Color& color2, float t);
 
     /// RGB 色空間の値から HSV 色空間の値を取得します。
     static void     RGBToHSV(const Color& rgbColor, float& outH, float& outS, float& outV);
 
     /// [a, b]の範囲内でSmoothStepの補完を計算します。
-    static Color    SmoothStep(const Color& a, const Color& b, float t);
+    static Color    SmoothStep(const Color& color1, const Color& color2, float t);
 
 
 #pragma mark - メンバ変数

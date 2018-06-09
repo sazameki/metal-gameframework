@@ -64,21 +64,21 @@ struct Vector3 : public GMObject
     static float    Dot(const Vector3& lhs, const Vector3& rhs);
 
     /// 2つのベクトルのEase-In補完を計算します。
-    static Vector3  EaseIn(const Vector3& a, const Vector3& b, float t);
+    static Vector3  EaseIn(const Vector3& vec1, const Vector3& vec2, float t);
 
     /// 2つのベクトルのEase-In-Out補完を計算します。
-    static Vector3  EaseInOut(const Vector3& a, const Vector3& b, float t);
+    static Vector3  EaseInOut(const Vector3& vec1, const Vector3& vec2, float t);
 
     /// 2つのベクトルのEase-Out補完を計算します。
-    static Vector3  EaseOut(const Vector3& a, const Vector3& b, float t);
+    static Vector3  EaseOut(const Vector3& vec1, const Vector3& vec2, float t);
 
     /// ベクトルaとbの間でtの値による線形補間を計算します。
-    /// パラメーターtは[0,1]の範囲で制限されます。
-    static Vector3  Lerp(const Vector3& a, const Vector3& b, float t);
+    /// パラメータtは[0,1]の範囲で制限されます。
+    static Vector3  Lerp(const Vector3& vec1, const Vector3& vec2, float t);
 
     /// ベクトルaとbの間でtの値による線形補間を計算します。
-    /// パラメーターtの範囲は制限されません。
-    static Vector3  LerpUnclamped(const Vector3& a, const Vector3& b, float t);
+    /// パラメータtの範囲は制限されません。
+    static Vector3  LerpUnclamped(const Vector3& vec1, const Vector3& vec2, float t);
 
     /// 2つのベクトルの各成分の最大の要素からなるベクトルを返します。
     static Vector3  Max(const Vector3& a, const Vector3& b);
@@ -105,19 +105,19 @@ struct Vector3 : public GMObject
     static Vector3  Scale(const Vector3& a, const Vector3& b);
 
     /// 2つのベクトルの球面線形補間を計算します。
-    /// パラメーターtは[0,1]の範囲にクランプされます。
-    static Vector3  Slerp(const Vector3& a, const Vector3& b, float t);
+    /// パラメータtは[0,1]の範囲にクランプされます。
+    static Vector3  Slerp(const Vector3& vec1, const Vector3& vec2, float t);
 
     /// 2つのベクトルの球面線形補間を計算します。
-    /// パラメーターtの値は制限されません。
-    static Vector3  SlerpUnclamped(const Vector3& a, const Vector3& b, float t);
+    /// パラメータtの値は制限されません。
+    static Vector3  SlerpUnclamped(const Vector3& vec1, const Vector3& vec2, float t);
 
     /// ベクトルを指定されたゴールに徐々に近づけていきます。
     static Vector3  SmoothDamp(const Vector3 &current, const Vector3 &target, Vector3 &currentVelocity,
                                float smoothTime, float maxSpeed, float deltaTime);
 
     /// 2つのベクトルのSmoothStep補完を計算します。
-    static Vector3 SmoothStep(const Vector3& a, const Vector3& b, float t);
+    static Vector3 SmoothStep(const Vector3& vec1, const Vector3& vec2, float t);
 
     
 #pragma mark - Public 変数
@@ -188,25 +188,25 @@ struct Vector3 : public GMObject
     /// このベクトルにベクトルvecの内容をコピーします。
     Vector3&  operator=(const Vector3& vec);
     
-    /// このベクトルの各要素に-1を掛けたベクトルを生成します。
+    /// このベクトルの各要素に-1を掛けたベクトルを作成します。
     Vector3   operator-() const;
     
-    /// このベクトルとベクトルvecの各要素を足し合わせたベクトルを生成します。
+    /// このベクトルとベクトルvecの各要素を足し合わせたベクトルを作成します。
     Vector3   operator+(const Vector3& vec) const;
     
-    /// このベクトルからベクトルvecの各要素を引いたベクトルを生成します。
+    /// このベクトルからベクトルvecの各要素を引いたベクトルを作成します。
     Vector3   operator-(const Vector3& vec) const;
     
-    /// 2つのベクトルの各要素同士を掛け合わせたベクトルを生成します。
+    /// 2つのベクトルの各要素同士を掛け合わせたベクトルを作成します。
     Vector3   operator*(const Vector3& vec) const;
     
-    /// このベクトルの各要素を、ベクトルvecの同じ要素で割ったベクトルを生成します。
+    /// このベクトルの各要素を、ベクトルvecの同じ要素で割ったベクトルを作成します。
     Vector3   operator/(const Vector3& vec) const;
     
-    /// このベクトルの各要素にスカラ値valueを掛け合わせたベクトルを生成します。
+    /// このベクトルの各要素にスカラ値valueを掛け合わせたベクトルを作成します。
     Vector3   operator*(float value) const;
     
-    /// このベクトルの各要素をスカラ値valueで割ったベクトルを生成します。
+    /// このベクトルの各要素をスカラ値valueで割ったベクトルを作成します。
     Vector3   operator/(float value) const;
     
     /// スカラ値とベクトルの掛け算を計算します。

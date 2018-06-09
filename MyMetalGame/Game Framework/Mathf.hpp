@@ -122,20 +122,20 @@ struct Mathf : public GMObject
     __attribute__((deprecated("floorf() (#include <cmath>) is recommended to use instead of Mathf::FloorToInt().")))
     static int      FloorToInt(float f);
 
-    /// [a, b]の範囲内で補間された値valueを生成するような線形パラメータtを計算します。
-    static float    InverseLerp(float a, float b, float value);
+    /// [v1, v2]の範囲内で補間された値valueを生成するような線形パラメータtを計算します。
+    static float    InverseLerp(float v1, float v2, float value);
 
     /// 値が2の乗数かどうかを判定します。
     static bool     IsPowerOfTwo(int value);
 
-    /// aとbの間でパラメータtによる線形補間を計算します。パラメータtは[0, 1]の範囲に制限されます。
-    static float    Lerp(float a, float b, float t);
+    /// v1とv2の間でパラメータtによる線形補間を計算します。パラメータtは[0, 1]の範囲に制限されます。
+    static float    Lerp(float v1, float v2, float t);
 
-    /// 単位が度で表される角度aとb 間でパラメータtによる線形補間を計算します。パラメータtは[0, 1]の範囲に制限されます。
-    static float    LerpAngle(float a, float b, float t);
+    /// 単位が度で表される角度a1とa2の間でパラメータtによる線形補間を計算します。パラメータtは[0, 1]の範囲に制限されます。
+    static float    LerpAngle(float a1, float a2, float t);
 
-    /// a と b の間で t による線形補間を計算します。パラメーター t の範囲は制限されません。
-    static float    LerpUnclamped(float a, float b, float t);
+    /// v1とv2の間でtによる線形補間を計算します。パラメータtの範囲は制限されません。
+    static float    LerpUnclamped(float v1, float v2, float t);
     
     /// 自然対数の底eに対する数xの対数を計算します。
     /// （Unityとの互換性のために用意していますが、C言語/C++では std::logf() (#include <cmath>) を使うのが一般的なので、使用は推奨されません。）
@@ -209,8 +209,8 @@ struct Mathf : public GMObject
     /// 値はバネとダンパーのような関数によって滑らかに計算されます。
     static float    SmoothDampAngle(float current, float target, float& outCurrentVelocity, float smoothTime, float maxSpeed, float deltaTime);
 
-    /// fromからtoの値を、開始時には徐々に加速し、終了時には徐々に減速していくやり方で補間します。tは0.0f〜1.0fの範囲にクランプされます。
-    static float    SmoothStep(float from, float to, float t);
+    /// v1からv2の値を、開始時には徐々に加速し、終了時には徐々に減速していくやり方で補間します。tは0.0f〜1.0fの範囲にクランプされます。
+    static float    SmoothStep(float v1, float v2, float t);
 
     /// fの平方根を計算します。
     /// （Unityとの互換性のために用意していますが、C言語/C++では sqrtf() (#include <cmath>) を使うのが一般的なので、使用は推奨されません。）
