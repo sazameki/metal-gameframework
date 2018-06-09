@@ -6,15 +6,11 @@
 //  Copyright (c) 2018 Satoshi Numata. All rights reserved.
 //
 
-// File for Metal kernel and shader functions
-
 #include <metal_stdlib>
 #include <simd/simd.h>
-
-// Including header shared between this Metal shader code and Swift/C code executing Metal API commands
 #import "ShaderTypes.hpp"
-
 #import "AAPLShaderTypes.h"
+
 
 using namespace metal;
 
