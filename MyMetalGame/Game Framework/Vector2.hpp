@@ -22,7 +22,6 @@ struct Vector3;
 struct Vector2 : public GMObject
 {
 #pragma mark - Static 定数
-public:
 
     /// 要素が(0, -1)となるVector2の定数です。
     static const Vector2&    down;
@@ -44,7 +43,6 @@ public:
 
 
 #pragma mark - Static 関数
-public:
 
     /// 2点間の角度を返します。
     static float    Angle(const Vector2& from, const Vector2& to);
@@ -101,7 +99,6 @@ public:
 
 
 #pragma mark - Public 変数
-public:
     /// ベクトルのx成分
     float x;
 
@@ -110,7 +107,6 @@ public:
 
 
 #pragma mark - コンストラクタ
-public:
 
     /// コンストラクタ。すべての要素を0で初期化します。
     Vector2();
@@ -123,7 +119,6 @@ public:
 
     
 #pragma mark - Public 関数
-public:
 
     /// ベクトルの長さを取得します。
     float       Magnitude() const;
@@ -154,7 +149,6 @@ public:
 
 
 #pragma mark - 演算子のオーバーロード
-public:
 
     /// このベクトルにベクトルvecの内容をコピーします。
     Vector2& operator=(const Vector2& vec);

@@ -20,7 +20,7 @@ struct Quaternion;
 struct Vector3 : public GMObject
 {
 #pragma mark - Static 定数
-public:
+
     /// 要素が(0, 0, -1)となるVector3の定数です。
     static const Vector3&    back;
 
@@ -47,7 +47,6 @@ public:
 
 
 #pragma mark - Static 関数
-public:
 
     /// from と to の2点間の角度を返します。
     static float    Angle(const Vector3& from, const Vector3& to);
@@ -122,7 +121,7 @@ public:
 
     
 #pragma mark - Public 変数
-public:
+
     /// ベクトルのx成分
     float x;
     
@@ -134,7 +133,6 @@ public:
 
 
 #pragma mark - コンストラクタ
-public:
 
     /// コンストラクタ。すべての要素を0で初期化します。
     Vector3();
@@ -151,7 +149,6 @@ public:
 
     
 #pragma mark - Public 関数
-public:
 
     /// ベクトルの長さを計算します。
     float       Magnitude() const;
@@ -188,7 +185,6 @@ public:
 
 
 #pragma mark - 演算子のオーバーロード
-public:
 
     /// このベクトルにベクトルvecの内容をコピーします。
     Vector3&  operator=(const Vector3& vec);

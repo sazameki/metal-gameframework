@@ -20,25 +20,11 @@ struct Vector3;
 struct Vector4;
 
 
-/*
-    ///// 2D設定
-    g->setProjectionMatrix(Matrix4x4::CreateOrthographicOffCenter(0.0f, Screen::width, 0.0f, Screen::height, 1.0f, 1500.0f));
-    g->setViewMatrix(Matrix4x4::identity);
- 
-    ///// 3D設定
-    // 視錐体の設定
-    //   35mmフィルムに対する実際のレンズの画角例
-    //     ・望遠域（135mmレンズで18度、300mmレンズで8度）
-    //     ・標準域（肉眼に近い）（50mmレンズで45度）
-    //     ・広角域（35mmレンズで62度、24mmレンズで84度、20mmレンズで94度）
-    Vector2 screenSize = g->getScreenSize();
-    g->setProjectionMatrix(Matrix4x4::CreatePerspectiveFieldOfView(M_PI/4, (float)Screen::width/Screen::height, 1.0f, 1500.0f));
- */
-
-
 /// 4x4の変換行列を表す構造体です。
 struct Matrix4x4 : public GMObject
 {
+
+#pragma mark - 
 public:
     /*!
         @const  identity

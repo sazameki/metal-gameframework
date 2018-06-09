@@ -22,7 +22,7 @@ class Quaternion;
 struct Vector4 : public GMObject
 {
 #pragma mark - Static 定数
-public:
+
     /// すべての要素が1の4次元ベクトル定数
     static const Vector4&    one;
 
@@ -31,7 +31,6 @@ public:
     
 
 #pragma mark - Static 関数
-public:
 
     /// 2つのベクトル間の距離を返します。
     static float    Distance(const Vector2& a, const Vector2& b);
@@ -62,160 +61,84 @@ public:
     /// 2つのベクトルの各成分の最小の要素からなるベクトルを返します。
     static Vector4  Min(const Vector4& vec1, const Vector4& vec2);
 
-    /*!
-        MoveTowards
-        @unity-compatible   true
-        現在の位置 current から target に向けて移動します。
-     */
+    /// 現在位置をターゲットの方向に移動させます。
     static Vector4 MoveTowards(const Vector4& current, const Vector4& target, float maxDistanceDelta);
 
-    /*!
-        Project
-        @unity-compatible   true
-        ベクトル b の上にベクトル a を投影したベクトルを返します。
-     */
+    /// ベクトル b の上にベクトル a を投影したベクトルを返します。
     static Vector4  Project(const Vector4& a, const Vector4& b);
 
-    /*!
-        Scale
-        @unity-compatible   true
-        2つのベクトルの各成分を乗算します。
-     */
+    /// 2つのベクトルの各成分を乗算します。
     static Vector4  Scale(const Vector4& a, const Vector4& b);
 
+    /// 2つのベクトルのSmoothStep補完を計算します。
     static Vector4  SmoothStep(const Vector4& a, const Vector4& b, float t);
 
-public:
+
 #pragma mark - Public 変数
-    /*!
-        @var    x
-        @unity-compatible   true
-     */
+
+    /// このベクトルのx成分
     float x;
     
-    /*!
-        @var    y
-        @unity-compatible   true
-     */
+    /// このベクトルのy成分
     float y;
     
-    /*!
-        @var    z
-        @unity-compatible   true
-     */
+    /// このベクトルのz成分
     float z;
     
-    /*!
-        @var    w
-        @unity-compatible   true
-     */
+    /// このベクトルのw成分
     float w;
-    
-public:
+
+
 #pragma mark - コンストラクタ
-    /*!
-        @task   コンストラクタ
-     */
-    
-    /*!
-        Vector4
-        @unity-compatible   false
-     */
+
+    /// コンストラクタ。すべての要素を0で初期化します。
     Vector4();
     
-    /*!
-        Vector4
-        @unity-compatible   true
-     */
+    /// コンストラクタ。x, y, z, wの要素の値を指定して初期化します。
     Vector4(float x, float y, float z, float w);
     
-    /*!
-        Vector4
-        @unity-compatible   false
-     */
+    /// コンストラクタ。Vector2のx,y成分にzとwの要素の値を合わせたVector4を作成します。
     Vector4(const Vector2& vec, float z, float w);
     
-    /*!
-        Vector4
-        @unity-compatible   false
-     */
+    /// コンストラクタ。Vector3のx,y,z成分にwの要素の値を合わせたVector4を作成します。
     Vector4(const Vector3& vec, float w);
     
-    /*!
-        Vector4
-        @unity-compatible   false
-     */
+    /// コピーコンストラクタ
     Vector4(const Vector4& vec);
     
-public:
+
 #pragma mark - Public 関数
-    /*!
-        Public 関数
-     */
-    
-    /*!
-        Magnitude
-        @unity-compatible   true
-     */
+
+    /// ベクトルの長さを計算します。
     float       Magnitude() const;
     
-    /*!
-        SqrMagnitude
-        @unity-compatible   true
-     */
+    /// ベクトルの長さの2乗を計算します。
     float       SqrMagnitude() const;
     
-    /*!
-        Normalized
-        @unity-compatible   true
-     */
+    /// 大きさを1に正規化したベクトルを返します。
     Vector4     Normalized() const;
     
-    /*!
-        Normalize
-        @unity-compatible   true
-     */
+    /// このベクトルの大きさを1に正規化します。
     void        Normalize();
     
-    /*!
-        Set
-        @unity-compatible   true
-        既存の Vector4 に x、y、z、w の成分を設定します。
-     */
+    /// このベクトルの x, y, z, w の成分を設定します。
     void        Set(float x, float y, float z, float w);
 
-    /*!
-        ToString
-        @unity-compatible   true
-        ベクトルの各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// ベクトルの各要素を見やすくフォーマットした文字列を返します。
     std::string ToString() const override;
 
-    /*!
-        ToString
-        @unity-compatible   true
-        各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットした文字列を返します。
     std::string ToString(const std::string& format) const;
 
-    /*!
-        c_str
-        ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str() const override;
 
-    /*!
-        c_str
-        各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str(const std::string& format) const;
 
-public:
+
 #pragma mark - 演算子のオーバーロード
-    /*!
-        @task   演算子のオーバーロード
-     */
-    
+
     /*!
         operator=
      */
@@ -302,10 +225,14 @@ public:
      */
     bool        operator!=(const Vector4& vec) const;
 
-    /*!
-        operator[]
-     */
+    /// [0]や[1]や[2]や[3]を使用して、x成分, y成分, z成分, w成分にアクセスします。
     float&      operator[](int index);
+
+    /// このベクトルをVector2に変換します。z要素とw要素はドロップされます。
+    operator Vector2() const;
+
+    /// このベクトルをVector3に変換します。w要素はドロップされます。
+    operator Vector3() const;
 
 };
 

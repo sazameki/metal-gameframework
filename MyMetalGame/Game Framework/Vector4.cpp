@@ -363,4 +363,13 @@ float& Vector4::operator[](int index)
     return (index == 0)? x: (index == 1)? y: (index == 2)? z: w;
 }
 
+Vector4::operator Vector2() const
+{
+    return Vector2(x, y);
+}
+
+Vector4::operator Vector3() const
+{
+    return Vector3(x, y, z);
+}
 
