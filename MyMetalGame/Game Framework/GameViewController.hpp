@@ -3,7 +3,7 @@
 //  MyMetalGame
 //
 //  Created by numata on 2018/06/05.
-//  Copyright © 2018 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2018 Satoshi Numata. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

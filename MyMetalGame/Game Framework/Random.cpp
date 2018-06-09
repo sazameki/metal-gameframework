@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Aug 05, 2009.
-//  Copyright (c) 2009-2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2009-2018 Satoshi Numata. All rights reserved.
 //
 
 #include "Random.hpp"

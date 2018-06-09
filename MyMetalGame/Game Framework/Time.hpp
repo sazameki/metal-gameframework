@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Jun 26, 2016.
-//  Copyright (c) 2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2016-2018 Satoshi Numata. All rights reserved.
 //
 
 #ifndef __TIME_HPP__

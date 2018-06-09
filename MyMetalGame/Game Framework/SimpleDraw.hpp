@@ -3,7 +3,7 @@
 //  MyMetalGame
 //
 //  Created by numata on 2018/06/08.
-//  Copyright © 2018 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2018 Satoshi Numata. All rights reserved.
 //
 
 #ifndef SimpleDraw_hpp

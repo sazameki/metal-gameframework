@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on 2016/12/28.
-//  Copyright (c) 2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2016-2018 Satoshi Numata. All rights reserved.
 //
 
 #include "Globals.hpp"

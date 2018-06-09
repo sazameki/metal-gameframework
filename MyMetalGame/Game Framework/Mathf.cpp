@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Jan 02, 2011.
-//  Copyright (c) 2010-2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2010-2018 Satoshi Numata. All rights reserved.
 //
 
 #include "Mathf.hpp"

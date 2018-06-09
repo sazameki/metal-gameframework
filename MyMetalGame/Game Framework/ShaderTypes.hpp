@@ -3,12 +3,9 @@
 //  MyMetalGame
 //
 //  Created by numata on 2018/06/05.
-//  Copyright © 2018 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2018 Satoshi Numata. All rights reserved.
 //
 
-//
-//  Header containing types and enum constants shared between Metal shaders and Swift/ObjC source
-//
 #ifndef ShaderTypes_hpp
 #define ShaderTypes_hpp
 

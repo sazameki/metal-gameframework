@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Dec 27, 2010.
-//  Copyright (c) 2010-2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2010-2018 Satoshi Numata. All rights reserved.
 //
 
 #import "AppDelegate.hpp"

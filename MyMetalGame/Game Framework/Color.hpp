@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Dec 26, 2010.
-//  Copyright (c) 2010-2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2010-2018 Satoshi Numata. All rights reserved.
 //
 
 #ifndef __COLOR_HPP__

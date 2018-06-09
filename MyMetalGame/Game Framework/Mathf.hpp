@@ -3,7 +3,7 @@
 //  Game Framework
 //
 //  Created by numata on Jan 02, 2011.
-//  Copyright (c) 2010-2016 Satoshi Numata. All rights reserved.
+//  Copyright (c) 2010-2018 Satoshi Numata. All rights reserved.
 //
 
 #ifndef __MATHF_HPP__
@@ -16,7 +16,9 @@
 /// 一般的な数学関数をまとめて扱うためのクラスです。
 struct Mathf : public GMObject
 {
-    /// 度からラジアンに変換するための定数です。
+#pragma mark - Static 定数
+
+    /// 度からラジアンに変換するための定数です。ラジアンの値に掛けて使用します。
     static const float  Deg2Rad;
 
     /// ごくわずかな浮動小数点の定数です。
@@ -37,7 +39,7 @@ struct Mathf : public GMObject
     __attribute__((deprecated("M_PI (#include <cmath>) is recommended to use instead of Mathf::PI.")))
     static const float  PI;
 
-    /// ラジアンから度に変換するための定数です。
+    /// ラジアンから度に変換するための定数です。度数法の値に掛けて使用します。
     static const float  Rad2Deg;
 
     
