@@ -38,84 +38,52 @@ struct Matrix4x4 : public GMObject
     union {
         float   mat[16];
         struct {
-            /*!
-                @var m00
-             */
+            /// m00要素
             float m00;
 
-            /*!
-                @var m01
-             */
+            /// m01要素
             float m01;
 
-            /*!
-                @var m02
-             */
+            /// m02要素
             float m02;
 
-            /*!
-                @var m03
-             */
+            /// m03要素
             float m03;
             
-            /*!
-                @var m10
-             */
+            /// m10要素
             float m10;
             
-            /*!
-                @var m11
-             */
+            /// m11要素
             float m11;
             
-            /*!
-                @var m12
-            */
+            /// m12要素
             float m12;
             
-            /*!
-                @var m13
-             */
+            /// m13要素
             float m13;
 
-            /*!
-                @var m20
-             */
+            /// m20要素
             float m20;
             
-            /*!
-                @var m21
-             */
+            /// m21要素
             float m21;
 
-            /*!
-                @var m22
-             */
+            /// m22要素
             float m22;
             
-            /*!
-                @var m23
-             */
+            /// m23要素
             float m23;
             
-            /*!
-                @var m30
-             */
+            /// m30要素
             float m30;
 
-            /*!
-                @var m31
-             */
+            /// m31要素
             float m31;
 
-            /*!
-                @var m32
-             */
+            /// m32要素
             float m32;
 
-            /*!
-                @var m33
-             */
+            /// m33要素
             float m33;
         };
     };
@@ -123,14 +91,10 @@ struct Matrix4x4 : public GMObject
 
 #pragma mark - Static 関数
 
-    /*!
-        Billboard
-     */
+    /// 指定された位置のオブジェクトの周囲を回転するビルボードを表す4x4行列を作成します。
     static Matrix4x4    Billboard(const Vector3& objectPos, const Vector3& cameraPos, const Vector3& cameraUpVec);
     
-    /*!
-        ConstrainedBillboard
-     */
+    /// 指定された軸の周りを回転する円筒状のビルボードを表す4x4行列を作成します。
     static Matrix4x4    ConstrainedBillboard(const Vector3& objectPos, const Vector3& cameraPos, const Vector3& rotateAxis,
                                              const Vector3& cameraForwardVec, const Vector3& objectForwardVec);
 
@@ -149,14 +113,10 @@ struct Matrix4x4 : public GMObject
     /// LookAt行列を作成します。
     static Matrix4x4    LookAt(const Vector3& from, const Vector3& to, const Vector3& up);
     
-    /*!
-        Ortho
-     */
+    /// 直交射影行列を作成します。
     static Matrix4x4    Ortho(float left, float right, float bottom, float top, float zNear, float zFar);
     
-    /*!
-        Perspective
-     */
+    /// 透視投影行列を作成します。
     static Matrix4x4    Perspective(float fov, float aspect, float zNear, float zFar);
 
     /// クォータニオンから、回転を表す4x4行列を作成します。
@@ -249,115 +209,89 @@ struct Matrix4x4 : public GMObject
 
 #pragma mark - 演算子のオーバーロード
 
-    /*!
-        operator=
-     */
+    /// この行列に行列matrixの内容をコピーします。
     Matrix4x4&  operator=(const Matrix4x4& matrix);
     
-    /*!
-        operator-
-     */
+    /// この行列の各要素に-1を掛けた行列を作成します。
     Matrix4x4   operator-() const;
 
-    /*!
-        operator+
-     */
+    /// この行列の各要素に、与えられた行列の同じ要素を足し合わせた行列を作成します。
     Matrix4x4   operator+(const Matrix4x4& matrix) const;
 
-    /*!
-        operator-
-     */
+    /// この行列の各要素から、与えられた行列の同じ要素を引いた行列を作成します。
     Matrix4x4   operator-(const Matrix4x4& matrix) const;
 
-    /*!
-        operator*
-     */
+    /// この行列に、与えられた行列を掛けた行列を作成します。
     Matrix4x4   operator*(const Matrix4x4& matrix) const;
 
-    /*!
-        operator/
-     */
+    /// この行列の各要素を、与えられた行列の同じ要素で割った行列を作成します。
     Matrix4x4   operator/(const Matrix4x4& matrix) const;
 
-    /*!
-        operator*
-     */
+    /// この行列の各要素に、与えられたスカラ値valueを掛けた行列を作成します。
     Matrix4x4   operator*(float value) const;
 
-    /*!
-        operator*
-     */
+    /// Vector2をこの行列で変換したVector2を作成します。
     Vector2     operator*(const Vector2& vector) const;
 
-    /*!
-        operator*
-     */
+    /// Vector3をこの行列で変換したVector3を作成します。
     Vector3     operator*(const Vector3& vector) const;
 
-    /*!
-        operator*
-     */
+    /// Vector4をこの行列で変換したVector4を作成します。
     Vector4     operator*(const Vector4& vector) const;
 
-    /*!
-        operator/
-     */
+    /// この行列の各要素を、与えられたスカラ値valueで割った行列を作成します。
     Matrix4x4   operator/(float value) const;
-    
-    
+
+    /// スカラ値を行列の各要素に掛け合わせた行列を作成します。
     friend Matrix4x4 operator*(float value, const Matrix4x4& matrix);
-    
-    
-    /*!
-        operator+=
-     */
+
+    /// この行列の各要素に、与えられた行列の同じ要素を足し合わせます。
     Matrix4x4&   operator+=(const Matrix4x4& matrix);
     
-    /*!
-        operator-=
-     */
+    /// この行列の各要素から、与えられた行列の同じ要素を引きます。
     Matrix4x4&   operator-=(const Matrix4x4& matrix);
     
-    /*!
-        operator*=
-     */
+    /// この行列に、与えられた行列を掛け合わせます。
     Matrix4x4&   operator*=(const Matrix4x4& matrix);
     
-    /*!
-        operator/=
-     */
+    /// この行列の各要素を、与えられた行列の同じ要素で割ります。
     Matrix4x4&   operator/=(const Matrix4x4& matrix);
     
-    /*!
-        operator*=
-     */
+    /// この行列の各要素に、スカラ値valueを掛け合わせます。
     Matrix4x4&   operator*=(float value);
     
-    /*!
-        operator/=
-     */
+    /// この行列の各要素を、スカラ値valueで割ります。
     Matrix4x4&   operator/=(float value);
     
-    
-    /*!
-        operator==
-     */
+    /// 与えられた行列がこの行列と等しいかを判定します。
     bool        operator==(const Matrix4x4& matrix) const;
     
-    /*!
-        operator!=
-     */
+    /// 与えられた行列がこの行列と等しくないかを判定します。
     bool        operator!=(const Matrix4x4& matrix) const;
+
 
 #pragma mark - 内部実装に使用する関数群
 private:
 
+    /// m20,m21,m22の要素に、与えられたベクトルの値をセットします。
     void    SetBackward(const Vector3& vec);
+
+    /// m10,m11,m12の要素に、与えられたベクトルの値を反転してセットします。
     void    SetDown(const Vector3& vec);
+
+    /// m20,m21,m22の要素に、与えられたベクトルの値を反転してセットします。
     void    SetForward(const Vector3& vec);
+
+    /// m00,m01,m02の要素に、与えられたベクトルの値を反転してセットします。
     void    SetLeft(const Vector3& vec);
+
+    /// m00,m01,m02の要素に、与えられたベクトルの値をセットします。
     void    SetRight(const Vector3& vec);
+
+    /// m30,m31,m32の要素に、与えられたベクトルの値をセットします。
     void    SetTranslation(const Vector3& vec);
+
+    /// m10,m11,m12の要素に、与えられたベクトルの値をセットします。
     void    SetUp(const Vector3& vec);
 
 };

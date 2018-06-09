@@ -451,55 +451,6 @@ Matrix4x4 Matrix4x4::Transpose() const
     return ret;
 }
 
-void Matrix4x4::SetBackward(const Vector3& vec)
-{
-    m20 = vec.x;
-    m21 = vec.y;
-    m22 = vec.z;
-}
-
-void Matrix4x4::SetDown(const Vector3& vec)
-{
-    m10 = -vec.x;
-    m11 = -vec.y;
-    m12 = -vec.z;
-}
-
-void Matrix4x4::SetForward(const Vector3& vec)
-{
-    m20 = -vec.x;
-    m21 = -vec.y;
-    m22 = -vec.z;
-}
-
-void Matrix4x4::SetLeft(const Vector3& vec)
-{
-    m00 = -vec.x;
-    m01 = -vec.y;
-    m02 = -vec.z;
-}
-
-void Matrix4x4::SetRight(const Vector3& vec)
-{
-    m00 = vec.x;
-    m01 = vec.y;
-    m02 = vec.z;
-}
-
-void Matrix4x4::SetTranslation(const Vector3& vec)
-{
-    m30 = vec.x;
-    m31 = vec.y;
-    m32 = vec.z;
-}
-
-void Matrix4x4::SetUp(const Vector3& vec)
-{
-    m10 = vec.x;
-    m11 = vec.y;
-    m12 = vec.z;
-}
-
 std::string Matrix4x4::ToString() const
 {
     return ToString("%.5f");
@@ -980,5 +931,57 @@ bool Matrix4x4::operator!=(const Matrix4x4& matrix) const
     if (fabsf(m33 - matrix.m33) >= 9.99999944E-11f) return true;
     
     return false;
+}
+
+
+#pragma mark - 内部実装に使用する関数群
+
+void Matrix4x4::SetBackward(const Vector3& vec)
+{
+    m20 = vec.x;
+    m21 = vec.y;
+    m22 = vec.z;
+}
+
+void Matrix4x4::SetDown(const Vector3& vec)
+{
+    m10 = -vec.x;
+    m11 = -vec.y;
+    m12 = -vec.z;
+}
+
+void Matrix4x4::SetForward(const Vector3& vec)
+{
+    m20 = -vec.x;
+    m21 = -vec.y;
+    m22 = -vec.z;
+}
+
+void Matrix4x4::SetLeft(const Vector3& vec)
+{
+    m00 = -vec.x;
+    m01 = -vec.y;
+    m02 = -vec.z;
+}
+
+void Matrix4x4::SetRight(const Vector3& vec)
+{
+    m00 = vec.x;
+    m01 = vec.y;
+    m02 = vec.z;
+}
+
+void Matrix4x4::SetTranslation(const Vector3& vec)
+{
+    m30 = vec.x;
+    m31 = vec.y;
+    m32 = vec.z;
+}
+
+void Matrix4x4::SetUp(const Vector3& vec)
+{
+    m10 = vec.x;
+    m11 = vec.y;
+    m12 = vec.z;
 }
 
