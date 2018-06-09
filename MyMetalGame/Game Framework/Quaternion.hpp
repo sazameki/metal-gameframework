@@ -14,20 +14,9 @@
 #include "Vector3.hpp"
 #include "Vector4.hpp"
 
+
 struct Matrix4x4;
 
-
-/*
-    http://blogs.msdn.com/b/ito/archive/2009/05/01/more-bones-04.aspx より
-    クォータニオンを使うと便利
-        ・アニメーションデータが多すぎるので圧縮したい（キーフレーム間の回転補間）
-        ・自由に回転状態を変化させたい（岩などのオブジェクトが地面の起伏の状態によって回転状態が変化する場合、飛行機などの姿勢制御）
-        ・回転状態を変化させる必要はないけど対象となるオブジェクトが大量にある（爆発などで大量の破片がランダムに回転しながら飛び散るエフェクト）
-    オイラー角で十分
-        ・制限された回転（FPS、TPSなどのカメラコントロール）
-        ・回転状態を変化する必要がない（爆発などで少数の破片がランダムに回転しながら飛び散るエフェクト）
-        ・誤差があっても大丈夫（回転の結合が短時間だけ必要な場合、上記のエフェクトなどカットシーン的な場面で使われる回転） 
- */
 
 /// クォータニオンを表現するクラスです。
 struct Quaternion : public GMObject
@@ -47,7 +36,7 @@ public:
     /// axis の周りを degree 度回転する回転を作成します。
     static Quaternion   AngleAxis(float degree, const Vector3& axis);
 
-    /// 2つの回転の内積を返します。
+    /// 2つの回転のドット積（内積）を返します。
     static float        Dot(const Quaternion& a, const Quaternion& b);
 
     /// オイラー角を元にクォータニオンを作成します。
@@ -56,22 +45,13 @@ public:
     /// オイラー角を元にクォータニオンを作成します。
     static Quaternion   Euler(const Vector3& euler);
 
-    /*!
-        EaseIn
-        @unity-compatible   false
-     */
+    /// 2つのクォータニオンの間でEase-In補完を計算します。
     static Quaternion   EaseIn(const Quaternion& a, const Quaternion& b, float t);
     
-    /*!
-        EaseInOut
-        @unity-compatible   false
-     */
+    /// 2つのクォータニオンの間でEase-In-Out補完を計算します。
     static Quaternion   EaseInOut(const Quaternion& a, const Quaternion& b, float t);
     
-    /*!
-        EaseOut
-        @unity-compatible   false
-     */
+    /// 2つのクォータニオンの間でEase-Out補完を計算します。
     static Quaternion   EaseOut(const Quaternion& a, const Quaternion& b, float t);
 
     /*!
@@ -80,23 +60,15 @@ public:
      */
     static Quaternion   FromToRotation(const Vector3& fromDir, const Vector3& toDir);
 
-    /*!
-        Inverse
-        @unity-compatible   true
-        クォータニオンの正反対の値となる値を返します。
-     */
+    /// クォータニオンの正反対の値となる値を返します。
     static Quaternion   Inverse(const Quaternion& rotation);
 
-    /*!
-        Lerp
-        @unity-compatible   true
-     */
+    /// 2つのクォータニオンの間で線形補完を計算します。
+    /// パラメーターtの値は、[0,1]の範囲に制限されます。
     static Quaternion   Lerp(const Quaternion& a, const Quaternion& b, float t);
 
-    /*!
-        LerpUnclamped
-        @unity-compatible   true
-     */
+    /// 2つのクォータニオンの間で線形補完を計算します。
+    /// パラメーターtの値は制限されません。
     static Quaternion   LerpUnclamped(const Quaternion& a, const Quaternion& b, float t);
 
     /*!
@@ -123,66 +95,48 @@ public:
      */
     static Quaternion   SlerpUnclamped(const Quaternion& a, const Quaternion& b, float t);
 
+    /// 2つのクォータニオンの間でSmoothStep補完を計算します。
     static Quaternion   SmoothStep(const Quaternion& a, const Quaternion& b, float t);
 
     
+#pragma mark - Public 変数
 public:
-    /*!
-        @var    x
-     */
+
+    /// クォータニオンのx成分
     float x;
 
-    /*!
-        @var    y
-     */
+    /// クォータニオンのy成分
     float y;
 
-    /*!
-        @var    z
-     */
+    /// クォータニオンのz成分
     float z;
 
-    /*!
-        @var    w
-     */
+    /// クォータニオンのz成分
     float w;
     
 
-public:
 #pragma mark - コンストラクタ
-    /*!
-        @task   コンストラクタ
-     */
-    
-    /*!
-        Quaternion
-     */
+public:
+
+    /// コンストラクタ。すべての要素の値を0で初期化します。
     Quaternion();
-    
-    /*!
-        Quaternion
-     */
+
+    /// コンストラクタ。すべての要素の値を指定して初期化します。
     Quaternion(float x, float y, float z, float w);
     
-    /*!
-        Quaternion
-     */
+    /// コピーコンストラクタ
     Quaternion(const Quaternion& quat);
     
+    /// コンストラクタ。Vector4のx,y,z,wの4つの値をそのままクォータニオンの要素の値としてコピーします。
     Quaternion(const Vector4& vec);
 
-    /*!
-        Quaternion
-     */
+    /// コンストラクタ。Matrix4x4の回転成分だけを取り出してクォータニオンで表します。
     Quaternion(const Matrix4x4& mat);
 
 
-public:
 #pragma mark - Public 関数
-    /*!
-        @task   Public 関数
-     */
-    
+public:
+
     /*!
         Concat
         @unity-compatible   false
@@ -195,76 +149,40 @@ public:
      */
     Quaternion&     Conjugate();
 
-    /*!
-        Magnitude
-        @unity-compatible   false
-     */
+    /// このクォータニオンの大きさを計算します。
     float           Magnitude() const;
     
-    /*!
-        Normalized
-        @unity-compatible   false
-     */
+    /// このクォータニオンを正規化したクォータニオンを生成します。
     Quaternion      Normalized() const;
     
-    /*!
-        Normalize
-        @unity-compatible   false
-     */
+    /// このクォータニオンを正規化します。
     void            Normalize();
 
-    /*!
-        Set
-        @unity-compatible   true
-        既存の Quaternion に x、y、z、w の成分を設定します。
-     */
+    /// このクォータニオンの x, y, z, w の各成分の値を設定します。
     void            Set(float x, float y, float z, float w);
 
-    /*!
-        SqrMagnitude
-        @unity-compatible   false
-     */
+    /// このクォータニオンの大きさの2乗を計算します。
     float           SqrMagnitude() const;
     
-    /*!
-        ToMatrix4x4
-        @unity-compatible   false
-     */
+    /// このクォータニオンと同じ回転を表すMatrix4x4構造体を生成します。
     Matrix4x4       ToMatrix4x4() const;
 
-    /*!
-        ToString
-        @unity-compatible   true
-        ベクトルの各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// ベクトルの各要素を見やすくフォーマットした文字列を返します。
     std::string     ToString() const override;
 
-    /*!
-        ToString
-        @unity-compatible   true
-        各要素に対して適用される書式を指定して、クォータニオンの各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、クォータニオンの各要素を見やすくフォーマットした文字列を返します。
     std::string     ToString(const std::string& format) const;
 
-    /*!
-        c_str
-        クォータニオンの各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// クォータニオンの各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str() const override;
 
-    /*!
-        c_str
-        @unity-compatible   false
-        各要素に対して適用される書式を指定して、クォータニオンの各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、クォータニオンの各要素を見やすくフォーマットしたC言語文字列を返します。
     const char*     c_str(const std::string& format) const;
 
-public:
+
 #pragma mark - 演算子のオーバーロード
-    /*!
-        @task   演算子のオーバーロード
-     */
-    
+public:
+
     /*!
         operator=
      */
@@ -320,7 +238,6 @@ public:
      */
     Quaternion      operator/(float value) const;
 
-    
     /*!
         operator+=
      */
@@ -351,7 +268,6 @@ public:
      */
     Quaternion&     operator/=(float value);
 
-    
     /*!
         operator==
      */
@@ -362,6 +278,7 @@ public:
      */
     bool        operator!=(const Quaternion& quat) const;
 
+    /// クォータニオンの各要素の値をそのままコピーしたVector4構造体を作成します。
     operator   Vector4() const;
 
 };
