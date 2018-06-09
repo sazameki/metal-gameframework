@@ -3,18 +3,18 @@
 
 #include <simd/simd.h>
 
-typedef struct
+struct AAPLVertex
 {
-    vector_float2 position;
-    vector_float4 color;
-} AAPLVertex;
+    simd::float2    position;
+    simd::float4    color;
+};
 
-typedef struct
+struct AAPLVertexFull
 {
-    vector_float3 position;
-    vector_float4 color;
-    vector_float3 normal;
-    vector_float2 uv;
-} AAPLVertexFull;
+    simd::float3    position;
+    simd::float4    color;
+    simd::float3    normal;
+    simd::float2    uv;
+};
 
 #endif /* AAPLShaderTypes_h */

@@ -21,17 +21,17 @@ using namespace metal;
 
 //// Shader 1
 
-typedef struct
+struct Vertex
 {
     float3 position [[attribute(VertexAttributePosition)]];
     float2 texCoord [[attribute(VertexAttributeTexcoord)]];
-} Vertex;
+};
 
-typedef struct
+struct ColorTexInOut
 {
     float4 position [[position]];
     float2 texCoord;
-} ColorTexInOut;
+};
 
 vertex ColorTexInOut vertexShader(Vertex in [[stage_in]],
                                constant Uniforms &uniforms[[buffer(BufferIndexUniforms)]])
@@ -59,55 +59,27 @@ fragment float4 fragmentShader(ColorTexInOut in [[stage_in]],
 
 
 //// Shader 2
-/*
-typedef struct
-{
-    vector_float2 position;
-    vector_float4 color;
-} ColorVertex;
 
-typedef struct
+struct ColorInOut
 {
     float4 position [[position]];
     float4 color;
-} ColorInOut;
+};
 
-vertex ColorInOut vertexShader2(uint vertexID[[vertex_id]], constant ColorVertex *vertices[[buffer(0)]])
+vertex ColorInOut vertexShader2(uint vertexID [[vertex_id]], constant AAPLVertex *vertices [[buffer(0)]])
 {
     ColorInOut out;
-    out.position = float4(vertices[vertexID].position.xy, 1.0, 1.0);
-    out.color = vertices[vertexID].color;
-    return out;
-}
 
-fragment float4 fragmentShader2(ColorVertex in[[stage_in]])
-{
-    return in.color;
-}
-*/
-
-typedef struct
-{
-    float4 clipSpacePosition [[position]];
-    float4 color;
-
-} RasterizerData;
-
-vertex RasterizerData vertexShader2(uint vertexID [[vertex_id]], constant AAPLVertex *vertices [[buffer(0)]])
-{
-    RasterizerData out;
-
-    out.clipSpacePosition.xy = vertices[vertexID].position.xy;
-    out.clipSpacePosition.z = 0.0;
-    out.clipSpacePosition.w = 1.0;
+    out.position.xy = vertices[vertexID].position.xy;
+    out.position.z = 0.0;
+    out.position.w = 1.0;
     out.color = vertices[vertexID].color;
 
     return out;
 }
 
-fragment float4 fragmentShader2(RasterizerData in [[stage_in]])
+fragment float4 fragmentShader2(ColorInOut in [[stage_in]])
 {
-    // We return the color we just set which will be written to our color attachment.
     return in.color;
 }
 

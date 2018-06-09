@@ -58,10 +58,6 @@ void Start()
         Color color = Color::Lerp(c1, c2, i / 99.0);
         triangles.push_back(new Triangle(color));
     }
-    for (int i = 0; i < 100; i++) {
-        int x = Random::IntValue(5);
-        cout << x << endl;
-    }
 }
 
 void Update()
