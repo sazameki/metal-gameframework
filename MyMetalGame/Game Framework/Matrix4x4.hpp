@@ -26,14 +26,10 @@ struct Matrix4x4 : public GMObject
 
 #pragma mark - Static 変数
 
-    /*!
-        @const  identity
-     */
+    /// 単位行列を表す定数
     static const Matrix4x4&  identity;
 
-    /*!
-        @const  zero
-     */
+    /// 要素がすべてゼロの行列を表す定数
     static const Matrix4x4&  zero;
 
 
@@ -138,21 +134,19 @@ struct Matrix4x4 : public GMObject
     static Matrix4x4    ConstrainedBillboard(const Vector3& objectPos, const Vector3& cameraPos, const Vector3& rotateAxis,
                                              const Vector3& cameraForwardVec, const Vector3& objectForwardVec);
 
-    /// Ease-In
-    static Matrix4x4    EaseIn(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+    /// 2つの行列間で、Ease-In補間を計算します。
+    static Matrix4x4    EaseIn(const Matrix4x4& mat1, const Matrix4x4& mat2, float t);
 
-    /// Ease-In-Out
-    static Matrix4x4    EaseInOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+    /// 2つの行列間で、Ease-In-Out補間を計算します。
+    static Matrix4x4    EaseInOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float t);
 
-    /// Ease-Out
-    static Matrix4x4    EaseOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+    /// 2つの行列間で、Ease-Out補間を計算します。
+    static Matrix4x4    EaseOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float t);
 
-    /// Lerp
-    static Matrix4x4    Lerp(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+    /// 2つの行列間で、線形補間を計算します。
+    static Matrix4x4    Lerp(const Matrix4x4& mat1, const Matrix4x4& mat2, float t);
 
-    /*!
-        LookAt
-     */
+    /// LookAt行列を作成します。
     static Matrix4x4    LookAt(const Vector3& from, const Vector3& to, const Vector3& up);
     
     /*!
@@ -168,69 +162,43 @@ struct Matrix4x4 : public GMObject
     /// クォータニオンから、回転を表す4x4行列を作成します。
     static Matrix4x4    Rotate(const Quaternion& q);
 
-    /*!
-        RotationX
-     */
+    /// X軸を中心としたradラジアンの回転を表す4x4行列を作成します。
     static Matrix4x4    RotationX(float rad);
     
-    /*!
-        RotationY
-     */
+    /// Y軸を中心としたradラジアンの回転を表す4x4行列を作成します。
     static Matrix4x4    RotationY(float rad);
     
-    /*!
-        RotationZ
-     */
+    /// Z軸を中心としたradラジアンの回転を表す4x4行列を作成します。
     static Matrix4x4    RotationZ(float rad);
 
-    /*!
-        Scale
-     */
+    /// スケーリングを表す4x4行列を作成します。
     static Matrix4x4    Scale(float x, float y);
 
-    /*!
-        Scale
-     */
+    /// スケーリングを表す4x4行列を作成します。
     static Matrix4x4    Scale(const Vector2& vec);
 
-    /*!
-        Scale
-     */
+    /// スケーリングを表す4x4行列を作成します。
     static Matrix4x4    Scale(float x, float y, float z);
     
-    /*!
-        Scale
-        @unity-compatible   true
-     */
+    /// スケーリングを表す4x4行列を作成します。
     static Matrix4x4    Scale(const Vector3& vec);
 
-    /// SmoothStep
-    static Matrix4x4    SmoothStep(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+    /// 2つの行列間で、SmoothStep補完を計算します。
+    static Matrix4x4    SmoothStep(const Matrix4x4& mat1, const Matrix4x4& mat2, float t);
 
-    /*!
-        Translation
-     */
+    /// 平行移動を表す4x4行列を作成します。
     static Matrix4x4    Translation(float x, float y);
 
-    /*!
-        Translation
-     */
+    /// 平行移動を表す4x4行列を作成します。
     static Matrix4x4    Translation(const Vector2& pos);
 
-    /*!
-        Translation
-     */
+    /// 平行移動を表す4x4行列を作成します。
     static Matrix4x4    Translation(float x, float y, float z);
 
-    /*!
-        Translation
-     */
+    /// 平行移動を表す4x4行列を作成します。
     static Matrix4x4    Translation(const Vector3& pos);
 
-    /*!
-        TRS
-        @unity-compatible   true
-     */
+    /// 平行移動、回転、スケーリングを同時に表す4x4行列を作成します。
     static Matrix4x4    TRS(const Vector3& pos, const Quaternion& q, const Vector3& s);
 
 
@@ -251,79 +219,31 @@ struct Matrix4x4 : public GMObject
 
 #pragma mark - Public 関数
 
-    /// Decompose
+    /// この4x4行列が表すスケール、回転、平行移動の成分を取り出します。
     bool        Decompose(Vector3& scale, Quaternion& rotation, Vector3& translation) const;
 
-    /// この行列の行列式を計算します。
+    /// 行列式を計算します。
     float       Determinant() const;
     
-    /*!
-        Inverse
-     */
+    /// 逆行列を計算します。
     Matrix4x4   Inverse() const;
 
-    /*!
-        ToQuaternion
-     */
+    /// この4x4行列が表すのと同等の回転を表すクォータニオンを作成します。
     Quaternion  ToQuaternion() const;
     
-    /*!
-        この行列の転置行列を求めます。
-     */
+    /// この行列の転置行列を作成します。
     Matrix4x4   Transpose() const;
-    
-    /*!
-        setBackward
-     */
-    void    setBackward(const Vector3& vec);
-    
-    /*!
-        setDown
-     */
-    void    setDown(const Vector3& vec);
-    
-    /*!
-        setForward
-     */
-    void    setForward(const Vector3& vec);
-    
-    /*!
-        setLeft
-     */
-    void    setLeft(const Vector3& vec);
-    
-    /*!
-        setRight
-     */
-    void    setRight(const Vector3& vec);
-    
-    /*!
-        setTranslation
-     */
-    void    setTranslation(const Vector3& vec);
-    
-    /*!
-        setUp
-     */
-    void    setUp(const Vector3& vec);
 
-    /*!
-        行列の各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// 行列の各要素を見やすくフォーマットした文字列を返します。
     std::string ToString() const override;
 
-    /*!
-        各要素に対して適用される書式を指定して、行列の各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、行列の各要素を見やすくフォーマットした文字列を返します。
     std::string ToString(const std::string& format) const;
 
-    /*!
-        行列の各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// 行列の各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str() const override;
-    /*!
-        各要素に対して適用される書式を指定して、行列の各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+
+    /// 各要素に対して適用される書式を指定して、行列の各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str(const std::string& format) const;
 
 
@@ -428,7 +348,18 @@ struct Matrix4x4 : public GMObject
         operator!=
      */
     bool        operator!=(const Matrix4x4& matrix) const;
-    
+
+#pragma mark - 内部実装に使用する関数群
+private:
+
+    void    SetBackward(const Vector3& vec);
+    void    SetDown(const Vector3& vec);
+    void    SetForward(const Vector3& vec);
+    void    SetLeft(const Vector3& vec);
+    void    SetRight(const Vector3& vec);
+    void    SetTranslation(const Vector3& vec);
+    void    SetUp(const Vector3& vec);
+
 };
 
 

@@ -76,50 +76,32 @@ struct Rect : public GMObject
 
     /// 矩形の中心点の座標を計算します。
     Vector2     Center() const;
-    
-    /*!
-        Contains
-     */
+
+    /// 指定した点がこの矩形内に含まれるかどうかを計算します。
     bool        Contains(const Vector2& pos) const;
 
-    /*!
-        Contains
-     */
+    /// 指定した点がこの矩形内に含まれるかどうかを計算します。Z座標は無視されます。
     bool        Contains(const Vector3& pos) const;
 
-    /*!
-        Contains
-     */
+    /// 指定した矩形がこの矩形内に含まれるかどうかを計算します。
     bool        Contains(const Rect& rect) const;
     
-    /*!
-        Max
-     */
+    /// X座標・Y座標ともにこの矩形の最大の値をもつ座標をリターンします。
     Vector2     Max() const;
 
-    /*!
-        Min
-     */
+    /// X座標・Y座標ともにこの矩形の最小の値をもつ座標をリターンします。
     Vector2     Min() const;
 
-    /*!
-        Overlaps
-     */
+    /// 矩形同士が重なっているかどうかを計算します。
     bool        Overlaps(const Rect& rect) const;
 
-    /*!
-        Position
-     */
+    /// この矩形の始点座標をVector2としてリターンします。
     Vector2     Position() const;
 
-    /*!
-        Set
-     */
+    /// この矩形の各要素を個別に設定します。
     void        Set(float x, float y, float width, float height);
 
-    /*!
-        Size
-     */
+    /// この矩形のサイズ情報をVector2としてリターンします。
     Vector2     Size() const;
 
     /*!

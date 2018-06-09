@@ -133,16 +133,10 @@ struct Quaternion : public GMObject
 
 #pragma mark - Public 関数
 
-    /*!
-        Concat
-        @unity-compatible   false
-     */
+    /// このクォータニオンと与えられたクォータニオンを結合したクォータニオンを作成します。
     Quaternion      Concat(const Quaternion& quat) const;
 
-    /*!
-        Conjugate
-        @unity-compatible   false
-     */
+    /// このクォータニオンの共役クォータニオンを計算します。
     Quaternion&     Conjugate();
 
     /// このクォータニオンの大きさを計算します。

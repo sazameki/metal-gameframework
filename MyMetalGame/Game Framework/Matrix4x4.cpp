@@ -44,10 +44,10 @@ Matrix4x4 Matrix4x4::Billboard(const Vector3& objectPos, const Vector3& cameraPo
     up = Vector3::Cross(backwards, right);
 
     Matrix4x4 ret(Matrix4x4::identity);
-    ret.setBackward(backwards);
-    ret.setRight(right);
-    ret.setUp(up);
-    ret.setTranslation(translation);
+    ret.SetBackward(backwards);
+    ret.SetRight(right);
+    ret.SetUp(up);
+    ret.SetTranslation(translation);
     
     return ret;
 }
@@ -451,49 +451,49 @@ Matrix4x4 Matrix4x4::Transpose() const
     return ret;
 }
 
-void Matrix4x4::setBackward(const Vector3& vec)
+void Matrix4x4::SetBackward(const Vector3& vec)
 {
     m20 = vec.x;
     m21 = vec.y;
     m22 = vec.z;
 }
 
-void Matrix4x4::setDown(const Vector3& vec)
+void Matrix4x4::SetDown(const Vector3& vec)
 {
     m10 = -vec.x;
     m11 = -vec.y;
     m12 = -vec.z;
 }
 
-void Matrix4x4::setForward(const Vector3& vec)
+void Matrix4x4::SetForward(const Vector3& vec)
 {
     m20 = -vec.x;
     m21 = -vec.y;
     m22 = -vec.z;
 }
 
-void Matrix4x4::setLeft(const Vector3& vec)
+void Matrix4x4::SetLeft(const Vector3& vec)
 {
     m00 = -vec.x;
     m01 = -vec.y;
     m02 = -vec.z;
 }
 
-void Matrix4x4::setRight(const Vector3& vec)
+void Matrix4x4::SetRight(const Vector3& vec)
 {
     m00 = vec.x;
     m01 = vec.y;
     m02 = vec.z;
 }
 
-void Matrix4x4::setTranslation(const Vector3& vec)
+void Matrix4x4::SetTranslation(const Vector3& vec)
 {
     m30 = vec.x;
     m31 = vec.y;
     m32 = vec.z;
 }
 
-void Matrix4x4::setUp(const Vector3& vec)
+void Matrix4x4::SetUp(const Vector3& vec)
 {
     m10 = vec.x;
     m11 = vec.y;
