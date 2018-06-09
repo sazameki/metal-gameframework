@@ -7,12 +7,10 @@
 //
 
 #import "AppDelegate.hpp"
-//#include "Settings.hpp"
 #include "Input.hpp"
 #include <algorithm>
 #include <utility>
-#include "GameError.hpp"
-//#include "Globals.hpp"
+#include "DebugSupport.hpp"
 
 
 KeyCodeType Input::sKeyState = 0;
@@ -142,7 +140,8 @@ float Input::GetAxis(const std::string& axisName)
         average /= kAxisHistorySize;
         return average;
     } else {
-        throw GameError("Input::GetAxis(): Unknown axis name: %s", axisName.c_str());
+        AbortGame("Input::GetAxis(): Unknown axis name: %s", axisName.c_str());
+        return FLT_MIN;
     }
 }
 
@@ -167,7 +166,8 @@ float Input::GetAxisRaw(const std::string& axisName)
         }
         return ret;
     } else {
-        throw GameError("Input::GetAxisRaw(): Unknown axis name: %s", axisName.c_str());
+        AbortGame("Input::GetAxisRaw(): Unknown axis name: %s", axisName.c_str());
+        return FLT_MIN;
     }
 }
 

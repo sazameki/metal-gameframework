@@ -27,12 +27,12 @@
 		8E9340DA20C99AE1000A4FE5 /* Vector2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9340D220C99AE1000A4FE5 /* Vector2.cpp */; };
 		8E9340DB20C99AE1000A4FE5 /* Rect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8E9340D420C99AE1000A4FE5 /* Rect.cpp */; };
 		8E9340DE20C99B59000A4FE5 /* StringSupport.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8E9340DD20C99B59000A4FE5 /* StringSupport.mm */; };
+		8EC9A17220CB727000A0C5D9 /* DebugSupport.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EC9A17020CB727000A0C5D9 /* DebugSupport.cpp */; };
 		8EE0C68320C99C6F00907509 /* Input.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C68220C99C6F00907509 /* Input.mm */; };
 		8EE0C68820C99C7800907509 /* Mathf.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C68520C99C7800907509 /* Mathf.cpp */; };
 		8EE0C68920C99C7800907509 /* Random.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C68620C99C7800907509 /* Random.cpp */; };
 		8EE0C68C20C99CB900907509 /* Time.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C68B20C99CB900907509 /* Time.cpp */; };
 		8EE0C68F20C99D2200907509 /* GMObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C68E20C99D2200907509 /* GMObject.cpp */; };
-		8EE0C69220C99EED00907509 /* GameError.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C69020C99EED00907509 /* GameError.cpp */; };
 		8EE0C69520C9A8A200907509 /* Globals.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C69320C9A8A100907509 /* Globals.cpp */; };
 		8EE0C6A120C9B9A400907509 /* MyMTKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EE0C6A020C9B9A400907509 /* MyMTKView.m */; };
 /* End PBXBuildFile section */
@@ -76,6 +76,8 @@
 		8E9340D420C99AE1000A4FE5 /* Rect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rect.cpp; sourceTree = "<group>"; };
 		8E9340DC20C99B59000A4FE5 /* StringSupport.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StringSupport.hpp; sourceTree = "<group>"; };
 		8E9340DD20C99B59000A4FE5 /* StringSupport.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = StringSupport.mm; sourceTree = "<group>"; };
+		8EC9A17020CB727000A0C5D9 /* DebugSupport.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DebugSupport.cpp; sourceTree = "<group>"; };
+		8EC9A17120CB727000A0C5D9 /* DebugSupport.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DebugSupport.hpp; sourceTree = "<group>"; };
 		8EDCDB7E20C9DC9F00287F9C /* AAPLShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AAPLShaderTypes.h; sourceTree = "<group>"; };
 		8EDCDB7F20CA939300287F9C /* Settings.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Settings.hpp; sourceTree = "<group>"; };
 		8EDCDB8020CADEAA00287F9C /* BlendMode.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = BlendMode.hpp; sourceTree = "<group>"; };
@@ -89,8 +91,6 @@
 		8EE0C68B20C99CB900907509 /* Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
 		8EE0C68D20C99D2200907509 /* GMObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GMObject.hpp; sourceTree = "<group>"; };
 		8EE0C68E20C99D2200907509 /* GMObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GMObject.cpp; sourceTree = "<group>"; };
-		8EE0C69020C99EED00907509 /* GameError.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameError.cpp; sourceTree = "<group>"; };
-		8EE0C69120C99EED00907509 /* GameError.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameError.hpp; sourceTree = "<group>"; };
 		8EE0C69320C9A8A100907509 /* Globals.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Globals.cpp; sourceTree = "<group>"; };
 		8EE0C69420C9A8A200907509 /* Globals.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Globals.hpp; sourceTree = "<group>"; };
 		8EE0C69F20C9B9A400907509 /* MyMTKView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyMTKView.h; sourceTree = "<group>"; };
@@ -184,10 +184,10 @@
 		8E0544B920C99A4700EE6484 /* system */ = {
 			isa = PBXGroup;
 			children = (
+				8EC9A17120CB727000A0C5D9 /* DebugSupport.hpp */,
+				8EC9A17020CB727000A0C5D9 /* DebugSupport.cpp */,
 				8EE0C68D20C99D2200907509 /* GMObject.hpp */,
 				8EE0C68E20C99D2200907509 /* GMObject.cpp */,
-				8EE0C69120C99EED00907509 /* GameError.hpp */,
-				8EE0C69020C99EED00907509 /* GameError.cpp */,
 				8EE0C68120C99C6F00907509 /* Input.hpp */,
 				8EE0C68220C99C6F00907509 /* Input.mm */,
 				8E9340DC20C99B59000A4FE5 /* StringSupport.hpp */,
@@ -336,6 +336,7 @@
 				8E9340D920C99AE1000A4FE5 /* Color.cpp in Sources */,
 				8E9340DE20C99B59000A4FE5 /* StringSupport.mm in Sources */,
 				8E0544A020C6AA7F00EE6484 /* main.m in Sources */,
+				8EC9A17220CB727000A0C5D9 /* DebugSupport.cpp in Sources */,
 				8E05449720C6AA7D00EE6484 /* Shaders.metal in Sources */,
 				8E9340D520C99AE1000A4FE5 /* Matrix4x4.cpp in Sources */,
 				8E9340DB20C99AE1000A4FE5 /* Rect.cpp in Sources */,
@@ -351,7 +352,6 @@
 				8EE0C69520C9A8A200907509 /* Globals.cpp in Sources */,
 				8E9340D820C99AE1000A4FE5 /* Quaternion.cpp in Sources */,
 				8E0544B020C9961B00EE6484 /* Game.cpp in Sources */,
-				8EE0C69220C99EED00907509 /* GameError.cpp in Sources */,
 				8E05449520C6AA7D00EE6484 /* GameViewController.mm in Sources */,
 				8E05448F20C6AA7D00EE6484 /* AppDelegate.mm in Sources */,
 			);

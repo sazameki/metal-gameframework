@@ -25,6 +25,7 @@
 #include "Input.hpp"
 #include "Mathf.hpp"
 #include "Random.hpp"
+#include "DebugSupport.hpp"
 #include "StringSupport.hpp"
 #include "Time.hpp"
 

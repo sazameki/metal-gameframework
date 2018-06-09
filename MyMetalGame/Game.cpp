@@ -76,6 +76,7 @@ void Update()
 
     SetBlendMode(BlendModeAlpha);
     if (Input::GetKey(KeyCode::A)) {
+        AbortGame("hoge");
         SetBlendMode(BlendModeScreen);
     } else if (Input::GetKey(KeyCode::S)) {
         SetBlendMode(BlendModeAdd);

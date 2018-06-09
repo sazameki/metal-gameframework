@@ -16,7 +16,9 @@
 #include "Settings.hpp"
 #import "AAPLShaderTypes.h"
 #include "BlendMode.hpp"
-#import <os/log.h>
+#include <os/log.h>
+#include "DebugSupport.hpp"
+#include "StringSupport.hpp"
 
 
 static id<MTLCommandBuffer> _Nullable   sCommandBuffer;
@@ -99,10 +101,10 @@ void FillTriangle(const Vector2& p1, const Vector2& p2, const Vector2& p3, const
 {
     // ポリゴンの数が設定された最大個数を超えていないことをチェックする
     if (sVertexBufferPointer + 3 > sVertexBufferPointerEdge) {
-        os_log(OS_LOG_DEFAULT, "[Error!!] Polygon count has exceeded limited memory size (max count is around %u).", METAL_MAX_POLYGON_COUNT);
-        exit(-1);
+        AbortGame("頂点バッファのメモリ領域を超えてポリゴン情報を格納しようとしました。（最大ポリゴン数は約 %u）", METAL_MAX_POLYGON_COUNT);
     }
 
+    // 頂点バッファにデータを書き込む
     sVertexBufferPointer->position.x = p1.x;
     sVertexBufferPointer->position.y = p1.y;
     sVertexBufferPointer->color.r = c1.r;

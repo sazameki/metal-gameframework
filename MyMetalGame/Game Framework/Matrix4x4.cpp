@@ -14,7 +14,7 @@
 #include "Vector2.hpp"
 #include "Vector3.hpp"
 #include "Vector4.hpp"
-#include "GameError.hpp"
+#include "DebugSupport.hpp"
 #include "StringSupport.hpp"
 
 #include <cmath>
@@ -391,7 +391,7 @@ Matrix4x4 Matrix4x4::Inverse() const
 {
     float det = Determinant();
     if (det == 0.0f) {
-        throw GameError();
+        AbortGame("Matrix4x4::Inverse() determinant should not be zero.");
     }
 
     Matrix4x4 ret;

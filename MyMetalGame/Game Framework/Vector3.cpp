@@ -10,7 +10,7 @@
 #include "Vector3.hpp"
 #include "Vector4.hpp"
 #include "Mathf.hpp"
-#include "GameError.hpp"
+#include "DebugSupport.hpp"
 #include "StringSupport.hpp"
 
 #include <algorithm>
@@ -407,7 +407,7 @@ bool Vector3::operator!=(const Vector3& vec) const
 float& Vector3::operator[](int index)
 {
     if (index >= 3) {
-        throw GameError("Error: Tried to access Vector3 with an invalid index: %d", index);
+        AbortGame("Tried to access Vector3 with an invalid index: %d", index);
     }
     return (index == 0)? x: (index == 1)? y: z;
 }

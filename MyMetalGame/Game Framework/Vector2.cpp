@@ -13,8 +13,8 @@
 #include "Quaternion.hpp"
 #include "Vector3.hpp"
 #include "Vector4.hpp"
+#include "DebugSupport.hpp"
 #include "StringSupport.hpp"
-#include "GameError.hpp"
 
 #include <algorithm>
 #include <cfloat>
@@ -344,7 +344,7 @@ bool Vector2::operator!=(const Vector2& vec) const
 float& Vector2::operator[](int index)
 {
     if (index >= 2) {
-        throw GameError("Error: Tried to access Vector2 with an invalid index: %d", index);
+        AbortGame("Tried to access Vector2 with an invalid index: %d", index);
     }
     return (index == 0)? x: y;
 }

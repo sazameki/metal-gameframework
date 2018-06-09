@@ -6,11 +6,11 @@
 //  Copyright (c) 2010-2016 Satoshi Numata. All rights reserved.
 //
 
-#import "Color.hpp"
-#import "Types.hpp"
-#import "StringSupport.hpp"
+#include "Color.hpp"
+#include "Types.hpp"
+#include "DebugSupport.hpp"
+#include "StringSupport.hpp"
 #include "Globals.hpp"
-#include "GameError.hpp"
 
 #include <cmath>
 #include <cstdlib>
@@ -229,7 +229,7 @@ Color::Color(const std::string& str)
         g = green / 255.0f;
         b = blue / 255.0f;
     } else {
-        throw GameError("不正なカラー指定文字列です \"%s\"", str.c_str());
+        AbortGame("不正なカラー指定文字列です \"%s\"", str.c_str());
     }
     a = 1.0f;
 }
