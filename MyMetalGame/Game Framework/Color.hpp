@@ -19,7 +19,6 @@ struct Vector4;
 struct Color : public GMObject
 {
 #pragma mark - Static 変数
-public:
 
     /// RGBAが(0, 0, 0, 1)の黒を表す色の定数です。
     static const Color&     black;
@@ -113,7 +112,6 @@ public:
 
 
 #pragma mark - Static 関数
-public:
 
     /// 2つの色の間を Ease-In 補間した色を作成します。
     static Color    EaseIn(const Color& a, const Color& b, float t);
@@ -145,7 +143,6 @@ public:
 
 
 #pragma mark - メンバ変数
-public:
 
     /// 赤の色成分（0.0〜1.0）
     float   r;
@@ -161,7 +158,6 @@ public:
 
 
 #pragma mark - コンストラクタ
-public:
 
     /// コンストラクタ。赤、緑、青の各色成分が 0.0 で、アルファ成分が 1.0 の色を作成します。
     Color();
@@ -189,7 +185,7 @@ public:
 
     
 #pragma mark - Public 関数
-public:
+
     /// 現在の色を元に、アルファ値を指定した値に変更した色を作成します。
     Color   Alpha(float alpha) const;
 
@@ -216,7 +212,6 @@ public:
 
 
 #pragma mark - 演算子のオーバーロード
-public:
 
     /// 渡された色情報をこのオブジェクトにコピーします。
     Color&  operator=(const Color& color);

@@ -24,8 +24,8 @@ struct Vector4;
 struct Matrix4x4 : public GMObject
 {
 
-#pragma mark - 
-public:
+#pragma mark - Static 変数
+
     /*!
         @const  identity
      */
@@ -36,7 +36,9 @@ public:
      */
     static const Matrix4x4&  zero;
 
-public:
+
+#pragma mark - Public 変数
+
     union {
         float   mat[16];
         struct {
@@ -121,11 +123,10 @@ public:
             float m33;
         };
     };
-    
-    /*!
-        @task   Static関数
-     */
-    
+
+
+#pragma mark - Static 関数
+
     /*!
         Billboard
      */
@@ -136,7 +137,19 @@ public:
      */
     static Matrix4x4    ConstrainedBillboard(const Vector3& objectPos, const Vector3& cameraPos, const Vector3& rotateAxis,
                                              const Vector3& cameraForwardVec, const Vector3& objectForwardVec);
-    
+
+    /// Ease-In
+    static Matrix4x4    EaseIn(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+
+    /// Ease-In-Out
+    static Matrix4x4    EaseInOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+
+    /// Ease-Out
+    static Matrix4x4    EaseOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+
+    /// Lerp
+    static Matrix4x4    Lerp(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+
     /*!
         LookAt
      */
@@ -191,6 +204,9 @@ public:
      */
     static Matrix4x4    Scale(const Vector3& vec);
 
+    /// SmoothStep
+    static Matrix4x4    SmoothStep(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
+
     /*!
         Translation
      */
@@ -218,27 +234,7 @@ public:
     static Matrix4x4    TRS(const Vector3& pos, const Quaternion& q, const Vector3& s);
 
 
-#pragma mark - 数値補完
-public:
-
-    /// Ease-In
-    static Matrix4x4     EaseIn(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
-
-    /// Ease-In-Out
-    static Matrix4x4     EaseInOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
-
-    /// Ease-Out
-    static Matrix4x4     EaseOut(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
-    
-    /// Lerp
-    static Matrix4x4     Lerp(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
-
-    /// SmoothStep
-    static Matrix4x4     SmoothStep(const Matrix4x4& mat1, const Matrix4x4& mat2, float amount);
-
-
 #pragma mark - コンストラクタ
-public:
 
     /// コンストラクタ。すべての要素が 0.0 の行列を生成します。
     Matrix4x4();
@@ -254,7 +250,6 @@ public:
 
 
 #pragma mark - Public 関数
-public:
 
     /// Decompose
     bool        Decompose(Vector3& scale, Quaternion& rotation, Vector3& translation) const;
@@ -333,7 +328,7 @@ public:
 
 
 #pragma mark - 演算子のオーバーロード
-public:
+
     /*!
         operator=
      */

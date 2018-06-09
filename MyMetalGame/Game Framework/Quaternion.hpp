@@ -22,14 +22,13 @@ struct Matrix4x4;
 struct Quaternion : public GMObject
 {    
 #pragma mark - Static 変数
-public:
 
     /// 単位回転を表すクォータニオンです。
     static const Quaternion&    identity;
 
 
 #pragma mark - Static 関数
-public:
+
     /// 2つの回転 a と b の間の角度をラジアン単位で返します。
     static float        Angle(const Quaternion& a, const Quaternion& b);
 
@@ -100,7 +99,6 @@ public:
 
     
 #pragma mark - Public 変数
-public:
 
     /// クォータニオンのx成分
     float x;
@@ -116,7 +114,6 @@ public:
     
 
 #pragma mark - コンストラクタ
-public:
 
     /// コンストラクタ。すべての要素の値を0で初期化します。
     Quaternion();
@@ -135,7 +132,6 @@ public:
 
 
 #pragma mark - Public 関数
-public:
 
     /*!
         Concat
@@ -174,14 +170,13 @@ public:
     std::string     ToString(const std::string& format) const;
 
     /// クォータニオンの各要素を見やすくフォーマットしたC言語文字列を返します。
-    const char* c_str() const override;
+    const char*     c_str() const override;
 
     /// 各要素に対して適用される書式を指定して、クォータニオンの各要素を見やすくフォーマットしたC言語文字列を返します。
     const char*     c_str(const std::string& format) const;
 
 
 #pragma mark - 演算子のオーバーロード
-public:
 
     /*!
         operator=

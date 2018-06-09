@@ -46,213 +46,94 @@ struct KeyCode
     /// backspaceキーを表す定数です。
     static const KeyCodeType Backspace;
 
-    /*!
-        @const Delete
-        deleteキーを表す定数です。
-     */
+    /// deleteキーを表す定数です。
     static const KeyCodeType Delete;
 
-    /*!
-        @const Tab
-        @group System
-        tabキーを表す定数です。
-     */
+    /// tabキーを表す定数です。
     static const KeyCodeType Tab;
 
-    /*!
-        @const LeftShift
-        @group System
-        左側のshiftキーを表す定数です。
-     */
+    /// 左側のshiftキーを表す定数です。
     static const KeyCodeType LeftShift;
 
-    /*!
-        @const RightShift
-        @group System
-        右側のshiftキーを表す定数です。
-     */
+    /// 右側のshiftキーを表す定数です。
     static const KeyCodeType RightShift;
 
-    /*!
-        @const A
-        @group System
-        Aキーを表す定数です。
-     */
+    /// Aキーを表す定数です。
     static const KeyCodeType A;
 
-    /*!
-        @const B
-        @group System
-        Bキーを表す定数です。
-     */
+    /// Bキーを表す定数です。
     static const KeyCodeType B;
 
-    /*!
-        @const C
-        @group System
-        Cキーを表す定数です。
-     */
+    /// Cキーを表す定数です。
     static const KeyCodeType C;
 
-    /*!
-        @const D
-        @group System
-        Dキーを表す定数です。
-     */
+    /// Dキーを表す定数です。
     static const KeyCodeType D;
 
-    /*!
-        @const E
-        @group System
-        Eキーを表す定数です。
-     */
+    /// Eキーを表す定数です。
     static const KeyCodeType E;
 
-    /*!
-        @const F
-        @group System
-        Fキーを表す定数です。
-     */
+    /// Fキーを表す定数です。
     static const KeyCodeType F;
 
-    /*!
-        @const G
-        @group System
-        Gキーを表す定数です。
-     */
+    /// Gキーを表す定数です。
     static const KeyCodeType G;
 
-    /*!
-        @const H
-        @group System
-        Hキーを表す定数です。
-     */
+    /// Hキーを表す定数です。
     static const KeyCodeType H;
 
-    /*!
-        @const I
-        @group System
-        Iキーを表す定数です。
-     */
+    /// Iキーを表す定数です。
     static const KeyCodeType I;
 
-    /*!
-        @const J
-        @group System
-        Jキーを表す定数です。
-     */
+    /// Jキーを表す定数です。
     static const KeyCodeType J;
 
-    /*!
-        @const K
-        @group System
-        Kキーを表す定数です。
-     */
+    /// Kキーを表す定数です。
     static const KeyCodeType K;
 
-    /*!
-        @const L
-        @group System
-        Lキーを表す定数です。
-     */
+    /// Lキーを表す定数です。
     static const KeyCodeType L;
 
-    /*!
-        @const M
-        @group System
-        Mキーを表す定数です。
-     */
+    /// Mキーを表す定数です。
     static const KeyCodeType M;
 
-    /*!
-        @const N
-        @group System
-        Nキーを表す定数です。
-     */
+    /// Nキーを表す定数です。
     static const KeyCodeType N;
 
-    /*!
-        @const O
-        @group System
-        Oキーを表す定数です。
-     */
+    /// Oキーを表す定数です。
     static const KeyCodeType O;
 
-    /*!
-        @const P
-        @group System
-        Pキーを表す定数です。
-     */
+    /// Pキーを表す定数です。
     static const KeyCodeType P;
 
-    /*!
-        @const Q
-        @group System
-        Qキーを表す定数です。
-     */
+    /// Qキーを表す定数です。
     static const KeyCodeType Q;
 
-    /*!
-        @const R
-        @group System
-        Rキーを表す定数です。
-     */
+    /// Rキーを表す定数です。
     static const KeyCodeType R;
 
-    /*!
-        @const S
-        @group System
-        Sキーを表す定数です。
-     */
+    /// Sキーを表す定数です。
     static const KeyCodeType S;
 
-    /*!
-        @const T
-        @group System
-        Tキーを表す定数です。
-     */
+    /// Tキーを表す定数です。
     static const KeyCodeType T;
 
-    /*!
-        @const U
-        @group System
-        Uキーを表す定数です。
-     */
+    /// Uキーを表す定数です。
     static const KeyCodeType U;
 
-    /*!
-        @const V
-        @group System
-        Vキーを表す定数です。
-     */
+    /// Vキーを表す定数です。
     static const KeyCodeType V;
 
-    /*!
-        @const W
-        @group System
-        Wキーを表す定数です。
-     */
+    /// Wキーを表す定数です。
     static const KeyCodeType W;
 
-    /*!
-        @const X
-        @group System
-        Xキーを表す定数です。
-     */
+    /// Xキーを表す定数です。
     static const KeyCodeType X;
 
-    /*!
-        @const Y
-        @group System
-        Yキーを表す定数です。
-     */
+    /// Yキーを表す定数です。
     static const KeyCodeType Y;
 
-    /*!
-        @const Z
-        @group System
-        Zキーを表す定数です。
-     */
+    /// Zキーを表す定数です。
     static const KeyCodeType Z;
 
     /// アルファベット列の上にある数字の0キーを表す定数です。
