@@ -17,10 +17,16 @@
 class GMObject
 {
 public:
+    /// ベクトルの各要素を見やすくフォーマットした文字列を返します。
     virtual std::string ToString() const;
+
+    /// ベクトルの各要素を見やすくフォーマットしたC言語文字列を返します。
     virtual const char* c_str() const;
 
+    /// ベクトルの各要素を見やすくフォーマットした文字列にキャスト変換します。
     operator std::string() const;
+
+    /// ベクトルの各要素を見やすくフォーマットしたC言語文字列にキャスト変換します。
     operator const char*() const;
 
 };
