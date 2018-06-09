@@ -21,10 +21,7 @@ namespace Game
 /// 矩形情報を表す構造体です。
 struct Rect : public GMObject
 {
-public:
-    /*!
-        @task   Static 関数
-     */
+#pragma mark - Static 関数
 
     /*!
         MinMaxRect
@@ -44,57 +41,40 @@ public:
      */
     static Vector2  PointToNormalized(Rect rectangle, Vector2 point);
 
-public:
-    /*!
-        @var    x
-     */
+
+#pragma mark - Public 変数
+
+    /// 矩形のx成分
     float  x;
 
-    /*!
-        @var    y
-     */
+    /// 矩形のy成分
     float  y;
 
-    /*!
-        @var    width
-     */
+    /// 矩形の横幅
     float  width;
 
-    /*!
-        @var    height
-     */
+    /// 矩形の高さ
     float  height;
-    
-public:
-    /*!
-        @task   コンストラクタ
-     */
-    
-    /*!
-        Rect
-     */
+
+
+#pragma mark - コンストラクタ
+
+    /// コンストラクタ。矩形情報のすべての要素を0で初期化します。
     Rect();
     
-    /*!
-        Rect
-     */
+    /// コンストラクタ。x, y, width, heightの要素を指定して初期化します。
     Rect(float x, float y, float width, float height);
 
-    /*!
-        Rect
-     */
+    /// コンストラクタ。Vector2構造体で始点posとサイズsizeを指定して初期化します。
     Rect(const Vector2& pos, const Vector2& size);
 
-    /*!
-        Rect
-     */
+    /// コピーコンストラクタ
     Rect(const Rect& rect);
 
-public:
-    /*!
-        @task   Public 関数
-     */
 
+#pragma mark - Public 関数
+
+    /// 矩形の中心点の座標を計算します。
     Vector2     Center() const;
     
     /*!
@@ -162,35 +142,21 @@ public:
      */
     float       yMin() const;
     
-    /*!
-        ToString
-        ベクトルの各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// ベクトルの各要素を見やすくフォーマットした文字列を返します。
     std::string ToString() const override;
 
-    /*!
-        ToString
-        各要素に対して適用される書式を指定して、矩形の各要素を見やすくフォーマットした文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、矩形の各要素を見やすくフォーマットした文字列を返します。
     std::string ToString(const std::string& format) const;
 
-    /*!
-        c_str
-        矩形の各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// 矩形の各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str() const override;
 
-    /*!
-        c_str
-        各要素に対して適用される書式を指定して、矩形の各要素を見やすくフォーマットしたC言語文字列を返します。
-     */
+    /// 各要素に対して適用される書式を指定して、矩形の各要素を見やすくフォーマットしたC言語文字列を返します。
     const char* c_str(const std::string& format) const;
 
-public:
-    /*!
-        @task   演算子のオーバーロード
-     */
-    
+
+#pragma mark - 演算子のオーバーロード
+
     /*!
         operator=
      */
