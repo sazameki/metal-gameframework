@@ -3,10 +3,12 @@
 
 #include <simd/simd.h>
 
+using namespace simd;
+
 struct AAPLVertex
 {
-    simd::float2    position;
-    simd::float4    color;
+    float2          position;
+    packed_float4   color;
 };
 
 struct AAPLVertexFull

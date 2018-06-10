@@ -195,6 +195,7 @@ void FlushVertexRendering()
     id<MTLDepthStencilState>    _depthState;
     id<MTLTexture>              _colorMap;
     MTLVertexDescriptor         *_mtlVertexDescriptor;
+    MTLVertexDescriptor         *_mtlVertexDescriptor2;
 
     uint32_t    _uniformBufferOffset;
     uint8_t     _uniformBufferIndex;
@@ -266,6 +267,20 @@ void FlushVertexRendering()
 
 - (id<MTLRenderPipelineState>)createSimpleDrawingPipelineWithLibrary:(id<MTLLibrary>)metalLib view:(nonnull MTKView *)view blendMode:(BlendMode)blendMode
 {
+    _mtlVertexDescriptor2 = [[MTLVertexDescriptor alloc] init];
+
+    _mtlVertexDescriptor2.attributes[0].format = MTLVertexFormatFloat2;
+    _mtlVertexDescriptor2.attributes[0].offset = 0;
+    _mtlVertexDescriptor2.attributes[0].bufferIndex = 0;
+
+    _mtlVertexDescriptor2.attributes[1].format = MTLVertexFormatFloat4;
+    _mtlVertexDescriptor2.attributes[1].offset = 2 * 4;
+    _mtlVertexDescriptor2.attributes[1].bufferIndex = 0;
+
+    _mtlVertexDescriptor2.layouts[0].stride = (2 + 4) * 4;
+    _mtlVertexDescriptor2.layouts[0].stepRate = 1;
+    _mtlVertexDescriptor2.layouts[0].stepFunction = MTLVertexStepFunctionPerVertex;
+
     id<MTLFunction> vfunc = [metalLib newFunctionWithName:@"vertexShader2"];
     id<MTLFunction> ffunc = [metalLib newFunctionWithName:@"fragmentShader2"];
 
@@ -273,6 +288,7 @@ void FlushVertexRendering()
     desc.label = @"MyPipeline2";
     desc.vertexFunction = vfunc;
     desc.fragmentFunction = ffunc;
+    desc.vertexDescriptor = _mtlVertexDescriptor2;
     desc.colorAttachments[0].pixelFormat = view.colorPixelFormat;
     desc.depthAttachmentPixelFormat = view.depthStencilPixelFormat;
     desc.stencilAttachmentPixelFormat = view.depthStencilPixelFormat;
@@ -368,6 +384,8 @@ void FlushVertexRendering()
     view.colorPixelFormat = MTLPixelFormatBGRA8Unorm;
     //view.colorPixelFormat = MTLPixelFormatBGRA8Unorm_sRGB;
     view.sampleCount = 1;
+
+    os_log(OS_LOG_DEFAULT, "size: %lu", sizeof(AAPLVertex));
 
     // 頂点データのバッファを用意する
     sVertexBufferSize = sizeof(AAPLVertex) * METAL_MAX_POLYGON_COUNT * 3;

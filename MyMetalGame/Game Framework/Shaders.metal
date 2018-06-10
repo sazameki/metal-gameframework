@@ -9,7 +9,6 @@
 #include <metal_stdlib>
 #include <simd/simd.h>
 #import "ShaderTypes.hpp"
-#import "AAPLShaderTypes.h"
 
 
 using namespace metal;
@@ -48,7 +47,6 @@ fragment float4 fragmentShader(ColorTexInOut in [[stage_in]],
     constexpr sampler colorSampler(mip_filter::linear,
                                    mag_filter::linear,
                                    min_filter::linear);
-
     half4 colorSample = colorMap.sample(colorSampler, in.texCoord.xy);
     return float4(colorSample);
 }
@@ -56,20 +54,26 @@ fragment float4 fragmentShader(ColorTexInOut in [[stage_in]],
 
 //// Shader 2
 
+struct ColorIn
+{
+    float2   position    [[attribute(0)]];
+    float4   color       [[attribute(1)]];
+};
+
 struct ColorInOut
 {
     float4 position [[position]];
     float4 color;
 };
 
-vertex ColorInOut vertexShader2(uint vertexID [[vertex_id]], constant AAPLVertex *vertices [[buffer(0)]])
+vertex ColorInOut vertexShader2(ColorIn in [[stage_in]])
 {
     ColorInOut out;
 
-    out.position.xy = vertices[vertexID].position.xy;
+    out.position.xy = in.position;
     out.position.z = 0.0;
     out.position.w = 1.0;
-    out.color = vertices[vertexID].color;
+    out.color = in.color;
 
     return out;
 }

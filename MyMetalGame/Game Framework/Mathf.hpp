@@ -109,8 +109,7 @@ struct Mathf : public GMObject
 
     /// ネイピア数eをx乗した数を計算します。
     /// （Unityとの互換性のために用意していますが、C言語/C++では expf() (#include <cmath>) を使うのが一般的なので、使用は推奨されません。）
-    __attribute__((deprecated("expf() (#include <cmath>) is recommended to use instead of Mathf::Exp().")))
-    static float    Exp(float x);
+    [[deprecated]] static float    Exp(float x);
 
     /// f以下の最大の整数を返します。
     /// （Unityとの互換性のために用意していますが、C言語/C++では floorf() (#include <cmath>) を使うのが一般的なので、使用は推奨されません。）

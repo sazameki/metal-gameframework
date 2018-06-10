@@ -237,18 +237,26 @@
 				8EE0C69320C9A8A100907509 /* Globals.cpp */,
 				8E05449020C6AA7D00EE6484 /* Renderer.hpp */,
 				8E05449120C6AA7D00EE6484 /* Renderer.mm */,
+				8EDCDB7E20C9DC9F00287F9C /* AAPLShaderTypes.h */,
+				8E05449620C6AA7D00EE6484 /* Shaders.metal */,
+				8EC9A17320CCB81400A0C5D9 /* others */,
+			);
+			name = metal_base;
+			sourceTree = "<group>";
+		};
+		8EC9A17320CCB81400A0C5D9 /* others */ = {
+			isa = PBXGroup;
+			children = (
 				8E05449320C6AA7D00EE6484 /* GameViewController.hpp */,
 				8E05449420C6AA7D00EE6484 /* GameViewController.mm */,
 				8EE0C69F20C9B9A400907509 /* MyMTKView.h */,
 				8EE0C6A020C9B9A400907509 /* MyMTKView.m */,
 				8E05448D20C6AA7D00EE6484 /* AppDelegate.hpp */,
 				8E05448E20C6AA7D00EE6484 /* AppDelegate.mm */,
-				8EDCDB7E20C9DC9F00287F9C /* AAPLShaderTypes.h */,
-				8E05449620C6AA7D00EE6484 /* Shaders.metal */,
 				8E05449820C6AA7D00EE6484 /* ShaderTypes.hpp */,
 				8E05449F20C6AA7F00EE6484 /* main.m */,
 			);
-			name = metal_base;
+			name = others;
 			sourceTree = "<group>";
 		};
 		8EE0C68020C99C5300907509 /* math */ = {
